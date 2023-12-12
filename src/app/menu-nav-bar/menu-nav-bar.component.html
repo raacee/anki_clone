@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/" >Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="fileDropdown" role="button" data-bs-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              File
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" routerLink="/all-learning-packages">Explore Lessons</a>
+              <a class="dropdown-item" href="#">Import...</a>
+              <a class="dropdown-item" href="#">New...</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item" href="#">Export...</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="studyNowDropdown" role="button" data-bs-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              Study Now
+            </a>
+            <div class="dropdown-menu" aria-labelledby="studyNowDropdown">
+              <a class="dropdown-item" href="#">Example 1</a>
+              <a class="dropdown-item" href="#">Example 2</a>
+              <a class="dropdown-item" href="#">Example 3</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Progress Statistics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Achievements</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="helpDropdown" role="button" data-bs-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              Help
+            </a>
+            <div class="dropdown-menu" aria-labelledby="helpDropdown">
+              <a class="dropdown-item" href="#">Glossary</a>
+              <a class="dropdown-item" href="#">Documentation</a>
+              <a class="dropdown-item" href="#">About</a>
+            </div>
+          </li>
+        <form class="d-flex" role="search">
+          <input id="searchForm" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="Menu2Dropdown" role="button" data-bs-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Menu 2
+          </a>
+          <div class="dropdown-menu" aria-labelledby="Menu2Dropdown">
+            <a class="dropdown-item" routerLink="/lesson-edit-form">Lesson Edit Form</a>
+          </div>
+        </li>
+        </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Profile
+          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" href="#">Login</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

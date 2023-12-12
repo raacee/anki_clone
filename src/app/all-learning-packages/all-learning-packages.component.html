@@ -1,0 +1,12 @@
+<h2>All Learning Packages</h2>
+
+<div *ngIf="learningPackages.length === 0">Loading learning packages...</div>
+
+<div *ngFor="let pkg of learningPackages">
+  <h3>{{ pkg.LearnPack_title }}</h3>
+  <p><strong>Description:</strong> {{ pkg.LearnPack_desc }}</p>
+  <p><strong>Category:</strong> {{ pkg.LearnPack_category }}</p>
+  <p><strong>Target:</strong> {{ pkg.LearnPack_target }}</p>
+  <p><strong>Difficulty Level:</strong> {{ pkg.LearnPack_difficultyLevel }}</p>
+  <hr>
+</div>
