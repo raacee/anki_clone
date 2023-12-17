@@ -3,30 +3,30 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angular-Bootstrap": {
+    "ankiclone": {
       "projectType": "application",
       "schematics": {},
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "src/angular",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-bootstrap",
-            "index": "src/index.html",
-            "main": "src/main.ts",
+            "outputPath": "dist",
+            "index": "src/angular/index.html",
+            "main": "src/angular/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/angular/favicon.ico",
+              "src/angular/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/angular/styles.css"
             ],
             "scripts": []
           },
@@ -36,7 +36,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -95,5 +95,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
