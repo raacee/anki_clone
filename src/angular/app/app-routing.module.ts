@@ -6,10 +6,8 @@ import { LessonDetailPageComponent } from "./lesson-detail-page/lesson-detail-pa
 import { TestPage1Component } from "./test-page1/test-page1.component";
 import { HomePageComponent } from './home-page/home-page.component';
 import { AllLearningPackagesComponent } from './all-learning-packages/all-learning-packages.component';
-
-
-
 import { LessonSearchPageComponent } from './lesson-search-page/lesson-search-page.component';
+import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 const routes: Routes = [ {path:'lesson-edit-form', component: LessonEditFormComponent},
   {path:'lesson-list', component: LessonListPageComponent},
@@ -21,6 +19,9 @@ const routes: Routes = [ {path:'lesson-edit-form', component: LessonEditFormComp
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true,enableTracing: true})],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {provide: LocationStrategy, useClass: PathLocationStrategy}
+  ],
 })
 export class AppRoutingModule { }

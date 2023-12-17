@@ -9,7 +9,7 @@ import { MenuNavBarComponent } from './menu-nav-bar/menu-nav-bar.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular-Bootstrap';
+  title = 'ankiclone';
   constructor() {
     console.log('AppComponent.constructor()');
   }
