@@ -6,20 +6,13 @@
 <hr class="separator">
 
 
-<h3 class="tab-title">Your packages :</h3>
+<h3 class="tab-title">Your study program :</h3>
 
 <div class="packages-container">
-  <div *ngFor="let package of learningPackages" class="package" (click)="toggleFacts(package.title)">
+  <div *ngFor="let package of learningPackages" class="package" (click)="openLearningSession(package.id)">
     <h3 class="package-title">{{ package.title }}</h3>
     <p class="package-category">Category: {{ package.category }}</p>
     <p class="package-difficulty">Difficulty Level: {{ package.difficultyLevel }}</p>
-    <p class="package-description">{{ package.description }}</p>
-
-    <div *ngIf="shownFacts[package.title]" class="facts">
-      <div *ngFor="let fact of package.facts" class="fact">
-        <p class="fact-question">{{ fact.question }}</p>
-        <p class="fact-answer">{{ fact.answer }}</p>
-      </div>
-    </div>
+    <p class="package-description">{{ package.desc }}</p>
   </div>
 </div>

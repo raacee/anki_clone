@@ -10,7 +10,7 @@ import { LessonSearchPageComponent } from './lesson-search-page/lesson-search-pa
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 const routes: Routes = [ {path:'lesson-edit-form', component: LessonEditFormComponent},
-  {path:'lesson-list', component: LessonListPageComponent},
+  {path:'lesson-list/:id', component: LessonListPageComponent},
   { path:'lesson/:id', component: LessonDetailPageComponent},
   { path:'test-page1', component: TestPage1Component },
   { path: 'all-learning-packages', component: AllLearningPackagesComponent },
