@@ -17,7 +17,9 @@ import { NumberDisplayComponent } from './number-display/number-display.componen
 import { NumberStepsComponent } from './number-steps/number-steps.component';
 import { NumberEditComponent } from './number-edit/number-edit.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { AllLearningPackagesComponent } from './all-learning-packages/all-learning-packages.component';
+import { AchievementsPageComponent } from './achievements-page/achievements-page.component';
+import { PackageCreationPageComponent } from './package-creation-page/package-creation-page.component';
+import { NonStudyPackagesComponent } from './non-study-packages/non-study-packages.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AllLearningPackagesComponent } from './all-learning-packages/all-learni
     NumberStepsComponent,
     NumberEditComponent,
     HomePageComponent,
-    AllLearningPackagesComponent
+    AchievementsPageComponent,
+    PackageCreationPageComponent,
+    NonStudyPackagesComponent
   ],
   imports: [
     BrowserModule,

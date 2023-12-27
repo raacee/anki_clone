@@ -5,7 +5,9 @@ import { LessonListPageComponent } from './lesson-list-page/lesson-list-page.com
 import { LessonDetailPageComponent } from "./lesson-detail-page/lesson-detail-page.component";
 import { TestPage1Component } from "./test-page1/test-page1.component";
 import { HomePageComponent } from './home-page/home-page.component';
-import { AllLearningPackagesComponent } from './all-learning-packages/all-learning-packages.component';
+import { PackageCreationPageComponent } from './package-creation-page/package-creation-page.component';
+import { AchievementsPageComponent } from './achievements-page/achievements-page.component';
+import { NonStudyPackagesComponent } from './non-study-packages/non-study-packages.component';
 import { LessonSearchPageComponent } from './lesson-search-page/lesson-search-page.component';
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
@@ -13,7 +15,9 @@ const routes: Routes = [ {path:'lesson-edit-form', component: LessonEditFormComp
   {path:'lesson-list/:id', component: LessonListPageComponent},
   { path:'lesson/:id', component: LessonDetailPageComponent},
   { path:'test-page1', component: TestPage1Component },
-  { path: 'all-learning-packages', component: AllLearningPackagesComponent },
+  { path: 'non-study-packages', component: NonStudyPackagesComponent },
+  { path: 'achievements-page', component: AchievementsPageComponent },
+  { path: 'package-creation-page', component: PackageCreationPageComponent },
   { path: 'home', component: HomePageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

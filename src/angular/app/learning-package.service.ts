@@ -7,7 +7,9 @@ export interface LearningPackage {
     title: string;
     difficultyLevel: number;
     questions: LearningFact[];
-  }
+    isAchieved?: boolean;
+    isStudyProgram?:boolean;
+    }
   export interface LearningFact {
     question: string;
     answer:string;
@@ -32,6 +34,8 @@ export class LearningPackageService {
           { question: "Peut-on utiliser TypeScript avec des frameworks JavaScript comme React ou Angular?", answer: "Oui, TypeScript est compatible avec la plupart des frameworks JavaScript." },
           { question: "Quel est l'avantage principal de l'utilisation des types en TypeScript?", answer: "Il améliore la fiabilité du code en ajoutant une vérification de type au moment de la compilation." },
       ],
+      isAchieved:false,
+      isStudyProgram:true,
   },
     {
       id:2,
@@ -46,6 +50,8 @@ export class LearningPackageService {
           { question: "Comment gérer les versions de Node.js pour différents projets?", answer: "En utilisant des outils comme NVM (Node Version Manager)." },
           { question: "Quel est le rôle du package.json dans un projet Node.js?", answer: "Il sert à définir les métadonnées, les dépendances et les scripts du projet." },
       ],
+      isAchieved:false,
+      isStudyProgram:false,
   },
   {
     id:3,
@@ -59,7 +65,9 @@ export class LearningPackageService {
         { question: "Quel est le rôle du data binding dans Angular?", answer: "Le data binding permet une communication bidirectionnelle entre le modèle et la vue." },
         { question: "Comment gérer la navigation dans une application Angular?", answer: "En utilisant le système de routing d'Angular." },
         { question: "Qu'est-ce qu'un module en Angular et à quoi sert-il?", answer: "Un module est un moyen de regrouper des composants, des directives, des services, etc., et organise le code en blocs fonctionnels." }
-  ]
+  ],
+  isAchieved:false,
+  isStudyProgram:true,
 },
 {
   id:4,
@@ -74,6 +82,8 @@ export class LearningPackageService {
       { question: "Donnez un exemple de classe utilitaire en Bootstrap.", answer: "La classe 'text-center' pour centrer le texte." },
       { question: "Comment Bootstrap gère-t-il la responsivité?", answer: "Avec des classes préfixées pour différentes tailles d'écran (ex. col-md-6)." },
   ],
+  isAchieved:false,
+  isStudyProgram:false,
 },
 {
   id:5,
@@ -88,6 +98,8 @@ export class LearningPackageService {
       { question: "Comment sécuriser une API?", answer: "En utilisant des méthodes comme l'authentification OAuth, des tokens JWT, etc." },
       { question: "Qu'est-ce qu'un JSON Web Token (JWT) et à quoi sert-il?", answer: "Un JWT est un moyen sécurisé de transmettre des informations entre parties sous forme de JSON. Il est souvent utilisé pour l'authentification." },
   ],
+  isAchieved:false,
+  isStudyProgram:true,
 },
  ];
 
@@ -97,5 +109,41 @@ export class LearningPackageService {
   }  
   getPackageById(id: number): LearningPackage | undefined {
     return this.learningPackages.find(p => p.id === id);
+  }
+  getNextId(): number {
+    return this.learningPackages.length > 0
+      ? Math.max(...this.learningPackages.map(p => p.id)) + 1
+      : 1;
+  }
+  addPackage(newPackage: LearningPackage) { // for creation
+    console.log("Before adding:", this.learningPackages);
+    this.learningPackages.push(newPackage);
+    console.log("After adding:", this.learningPackages);
+  }
+  deletePackage(id: number): void {
+    this.learningPackages = this.learningPackages.filter(p => p.id !== id);
+  }
+  achievePackage(id: number): void {
+    const pkg = this.learningPackages.find(p => p.id === id);
+    if (pkg) {
+      pkg.isAchieved = true;
+      console.log(`Package ${id} achieved`, pkg);
+
+    }
+  }
+  addPackageToStudy(id: number): void {
+    const pkg = this.learningPackages.find(p => p.id === id);
+    if (pkg) {
+      pkg.isStudyProgram = true;
+    }
+  }
+  getNonActiveLearningPackages(): LearningPackage[] {
+    return this.learningPackages.filter(p => !p.isStudyProgram);
+  }
+  getActiveLearningPackages(): LearningPackage[] {
+    return this.learningPackages.filter(p => !p.isAchieved && p.isStudyProgram);
+  }
+  getAchievedLearningPackages(): LearningPackage[] {
+    return this.learningPackages.filter(p => p.isAchieved);
   }
 }

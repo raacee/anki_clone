@@ -21,6 +21,7 @@ body {
   max-width: 70%;
 }
 .package {
+  position:relative;
   display: block;
   flex-direction: column; /* Stack the children vertically */
   width: 100%;
@@ -95,3 +96,24 @@ body {
   margin-top: 10px; /* Space between title and quote */
 }
 
+.package-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.package-actions {
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.action-button i {
+  font-size: 1.25em;
+}

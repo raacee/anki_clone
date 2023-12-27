@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LearningPackageService, LearningPackage } from '../learning-package.service';
 
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -15,11 +16,15 @@ export class HomePageComponent implements OnInit {
     private router: Router,
     private learningPackageService: LearningPackageService
   ) { }
+
   learningPackages!: LearningPackage[];
 
   ngOnInit(): void {
     this.setCurrentQuote();
-    this.learningPackages = this.learningPackageService.getLearningPackages();
+    this.loadLearningPackages();
+  }
+  loadLearningPackages(): void {
+    this.learningPackages = this.learningPackageService.getActiveLearningPackages();
   }
   openLearningSession(packageId: number): void {
     this.router.navigate(['lesson-list', packageId]);
@@ -40,5 +45,24 @@ export class HomePageComponent implements OnInit {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
     const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
     return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+  }
+
+  modifyPackage(id: number, event: Event): void {
+    event.stopPropagation();
+    console.log('Modify package with ID:', id);
+  }
+
+  deletePackage(id: number, event: Event): void {
+    event.stopPropagation();
+    this.learningPackageService.deletePackage(id);
+    this.loadLearningPackages();
+  }
+
+  achievePackage(id: number, event: Event): void {
+    event.stopPropagation();
+    console.log('Achieve package with ID:', id);
+    this.learningPackageService.achievePackage(id);
+    this.loadLearningPackages(); // Refresh the list of active packages
+    this.router.navigate(['/achievements-page']); // Navigate to achievements page
   }
 }
