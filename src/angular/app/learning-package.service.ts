@@ -135,7 +135,6 @@ export class LearningPackageService {
     if (pkg) {
       pkg.isAchieved = true;
       console.log(`Package ${id} achieved`, pkg);
-
     }
   }
   addPackageToStudy(id: number): void {
