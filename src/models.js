@@ -1,8 +1,9 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
+const { Sequelize, DataTypes, Model } = require('sequelize');
+
 const sequelize = new Sequelize(
-    'LearningFactDb',
-    'learningDbUser',
-    'password',
+    'anki_clone',
+    'anki',
+    'anki_clone',
     {
         host: 'localhost',
         port: 5432,

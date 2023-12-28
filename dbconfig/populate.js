@@ -1,4 +1,10 @@
-const {sequelize, User, UserLearningPackage, LearningFact, LearningSession} = require('../src/models')
+const {
+    sequelize,
+    User,
+    UserLearningPackage,
+    LearningFact,
+    LearningSession
+} = require('../src/models.js')
 
 UserLearningPackage.hasMany(LearningFact);
 LearningFact.belongsTo(UserLearningPackage, { foreignKey: 'ULP_id', targetKey: 'ULP_id'});
