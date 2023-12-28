@@ -1,4 +1,4 @@
-const { LearningPackage } = require('src/models.js')
+const { LearningPackage } = require('./models.js')
 
 async function getAllLearningPackages(req,res){
     await LearningPackage.findAll()
