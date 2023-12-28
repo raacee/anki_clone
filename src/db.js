@@ -1,7 +1,7 @@
 const { LearningPackage } = require('src/models.js')
 
-function getAllLearningPackages(req,res){
-    LearningPackage.findAll()
+async function getAllLearningPackages(req,res){
+    await LearningPackage.findAll()
         .then((learningPackages) => {
             // Process retrieved learning packages
             res.json(learningPackages);
