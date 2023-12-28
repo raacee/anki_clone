@@ -15,6 +15,10 @@ app.get('/main.js', function(req, res){
   res.sendFile(__dirname + '/angular/dist/main.js')
 })
 
+app.get('/vendor.js', function(req, res){
+  res.sendFile(__dirname + '/angular/dist/vendor.js')
+})
+
 app.get('/polyfills.js', function(req, res){
   res.sendFile(__dirname + '/angular/dist/polyfills.js')
 })
@@ -47,6 +51,8 @@ app.get('/api/learningPackages', function(req, res) {
     });
   });
 })
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
