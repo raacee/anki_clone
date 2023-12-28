@@ -1,4 +1,5 @@
-const {DataTypes, Sequelize} = require("sequelize")
+const { Sequelize, DataTypes, Model } = require('sequelize');
+
 const sequelize = new Sequelize(
     'anki_clone',
     'anki',
@@ -52,13 +53,18 @@ const UserLearningPackage = sequelize.define('UserLearningPackage', {
     },
     ULP_startDate: {
         type: DataTypes.DATE,
-        allowNull: false,
+        defaultValue: null,
     },
     ULP_expectedEndDate: {
         type: DataTypes.DATE,
-        allowNull: false,
+        defaultValue: null,
     },
-    ULP_achieved: {             // If the UPL is achieved or not.
+    ULP_isAchieved: {             // If the UPL is achieved or not.
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
+    ULP_isStudyProgram: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
@@ -71,12 +77,12 @@ const LearningFact = sequelize.define('LearningFact', {
         primaryKey: true,
         autoIncrement: true,
     },
-    LearnFact_question: {
+    LF_question: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     LF_answer: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
     },
     LF_image: {
@@ -120,6 +126,14 @@ const LearningSession = sequelize.define('LearningSession', {
         type: DataTypes.INTEGER,
     },
 });
+
+UserLearningPackage.hasMany(LearningFact);
+LearningFact.belongsTo(UserLearningPackage);
+User.hasMany(UserLearningPackage);
+UserLearningPackage.belongsTo(User);
+User.hasMany(LearningSession);
+LearningSession.belongsTo(User);
+
 
 module.exports = {
     sequelize,
