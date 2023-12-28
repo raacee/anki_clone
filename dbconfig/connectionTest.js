@@ -1,4 +1,4 @@
-const { sequelize } = require("./models")
+const { sequelize } = require("../src/models")
 
 sequelize.authenticate()
     .then(()=>console.log('Connection has been established successfully.'))

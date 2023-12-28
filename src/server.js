@@ -1,5 +1,6 @@
-const  express = require('express');
-
+const express = require('express');
+const { LearningPackage } = require('src/models.js')
+const {getAllLearningPackages} = require("./db");
 
 const PORT = 3000
 const app = express()
@@ -32,27 +33,8 @@ app.get('/styles.css', function(req, res){
 })
 
 app.get('/api/learningPackages', function(req, res) {
-  client.connect((err, client, done) => {
-    if (err) {
-      console.error('Error acquiring client from pool:', err);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-
-    client.query('SELECT * FROM LearningPackages', (err, result) => {
-      done(); // Release the client back to the pool
-
-      if (err) {
-        console.error('Error retrieving learning packages:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
-
-      const learningPackages = result.rows;
-      res.json(learningPackages);
-    });
-  });
-})
-
-
+  getAllLearningPackages(req,res)
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
