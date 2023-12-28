@@ -49,7 +49,7 @@ export class HomePageComponent implements OnInit {
 
   modifyPackage(id: number, event: Event): void {
     event.stopPropagation();
-    console.log('Modify package with ID:', id);
+    this.router.navigate(['/learning-facts-page', id]);
   }
 
   deletePackage(id: number, event: Event): void {

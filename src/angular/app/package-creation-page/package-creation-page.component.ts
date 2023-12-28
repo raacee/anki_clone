@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LearningPackageService, LearningPackage } from '../learning-package.service';
 
@@ -12,6 +13,7 @@ export class PackageCreationPageComponent {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private learningPackageService: LearningPackageService
   ) {
     this.packageForm = this.fb.group({
@@ -34,7 +36,7 @@ export class PackageCreationPageComponent {
         isAchieved: false
       };
       this.learningPackageService.addPackage(newPackage);
-      // Reset the form or navigate away
+      this.router.navigate(['/non-study-packages']);
     }
   }
 }

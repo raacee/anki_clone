@@ -20,6 +20,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AchievementsPageComponent } from './achievements-page/achievements-page.component';
 import { PackageCreationPageComponent } from './package-creation-page/package-creation-page.component';
 import { NonStudyPackagesComponent } from './non-study-packages/non-study-packages.component';
+import { LearningFactsPageComponent } from './learning-facts-page/learning-facts-page.component';
+import { ModifyLearningFactPageComponent } from './modify-learning-fact-page/modify-learning-fact-page.component';
+import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learning-fact-page.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { NonStudyPackagesComponent } from './non-study-packages/non-study-packag
     HomePageComponent,
     AchievementsPageComponent,
     PackageCreationPageComponent,
-    NonStudyPackagesComponent
+    NonStudyPackagesComponent,
+    LearningFactsPageComponent,
+    ModifyLearningFactPageComponent,
+    AddLearningFactPageComponent
   ],
   imports: [
     BrowserModule,
