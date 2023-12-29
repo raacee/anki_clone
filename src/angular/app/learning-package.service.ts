@@ -137,7 +137,7 @@ export class LearningPackageService {
     const text = await response.text()
     return JSON.parse(text)
   }
-  async getPackageById(id: number): Promise<LearningPackage | undefined> {
+  async getPackageById(id: string): Promise<LearningPackage | undefined> {
     return JSON.parse(
       await(
           await fetch('/api/learningpackages/'+id)
@@ -182,7 +182,7 @@ export class LearningPackageService {
       }
     }
   }
-  async addFact(packageId: number, newFact: LearningFact) {
+  async addFact(packageId: string, newFact: LearningFact) {
     const pkg = await this.getPackageById(packageId);
     if (pkg) {
       pkg.questions.push(newFact);

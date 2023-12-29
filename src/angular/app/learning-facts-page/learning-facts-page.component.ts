@@ -33,6 +33,7 @@ export class LearningFactsPageComponent implements OnInit {
     this.router.navigate(['/modify-learning-fact-page', pkg.id, fact.id]);
   }
   addFact(id:number): void {
+    console.log('ID IS : '+id)
     this.router.navigate(['/add-learning-fact-page', id]);
   }
 }

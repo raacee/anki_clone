@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LearningPackageService, LearningFact } from '../learning-package.service';
+import {LearningPackageService, LearningFact, LearningPackage} from '../learning-package.service';
 
 @Component({
   selector: 'app-add-learning-fact-page',
@@ -11,7 +11,7 @@ import { LearningPackageService, LearningFact } from '../learning-package.servic
 
 export class AddLearningFactPageComponent implements OnInit {
   factForm: FormGroup;
-  packageId!: number;
+  packageId!: string;
   selectedImage: File | null = null;
 
 
@@ -27,14 +27,7 @@ export class AddLearningFactPageComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.packageId = +params.get('packageId')!;
-
-      if (isNaN(this.packageId)) {
-        console.error('Invalid package ID');
-        this.router.navigate(['/']);
-      }
-    });
+    this.packageId = this.router.url.split('/')[1]
   }
   onImageSelected(event: Event): void {
     const element = event.target as HTMLInputElement;
@@ -74,22 +67,20 @@ app.post('/upload', (req, res) => {
 
   async onSubmit() {
     if (this.factForm.valid) {
-      const pkg = await this.learningPackageService.getPackageById(this.packageId);
+      const pkg = await this.getPackageById(this.packageId);
       if (pkg) 
       {
-        const newFactId = pkg.questions.reduce((max, fact) => fact.id > max ? fact.id : max, 0) + 1; //if no fact ==> 0+1 = 1
-                                                                                                     //if facts, ==> last index +1
-        const newFact: LearningFact = {
-          id: newFactId,
+        const newFactId = pkg.questions.reduce((max, fact) => fact.id > max ? fact.id : max, 0) + 1; //if no fact ==> 0+1 = 1//if facts, ==> last index +1
+        const newFact = {
           question: this.factForm.value.question,
           answer: this.factForm.value.answer,
           image:this.selectedImage ? 'path/to/image' : null,
           reviewCount:0,
           confidenceLevel:null,
           lastReviewedDate:null,
-          nextDate:null 
+          nextDate:null,
         };
-        this.learningPackageService.addFact(this.packageId, newFact);
+        this.addFact(this.packageId, newFact);
         this.router.navigate(['/learning-facts-page', this.packageId]);
       }
       else
@@ -98,5 +89,25 @@ app.post('/upload', (req, res) => {
         this.router.navigate(['/']);
       }
     }
+  }
+
+  async addFact(packageId: string, newFact: { question: any; answer: any; image: string | null; reviewCount: number; confidenceLevel: null; lastReviewedDate: null; nextDate: null; }) {
+    const pkg = await this.getPackageById(packageId);
+    if (pkg) {
+      const res = await fetch(`/api/learningpackage/${packageId}`, {
+        method: 'POST', // or 'PATCH' depending on your API design
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newFact)
+      })
+
+    }
+  }
+
+  async getPackageById(id: string): Promise<LearningPackage | undefined> {
+    return JSON.parse(
+      await(
+          await fetch('/api/learningpackages/'+id)
+      ).text()
+    )
   }
 }

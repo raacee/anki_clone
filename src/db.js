@@ -33,7 +33,16 @@ async function getAllLearningPackages(){
 }
 
 async function addNewLearningFact(lf){
-    await LearningFact.update(lf)
+    const LP = {
+        LF_question:  lf.factForm.value.question,
+        LF_answer:  lf.factForm.value.answer,
+        LF_image: lf.selectedImage ? lf.selectedImage : null,
+        LF_reviewCount:0,
+        LF_confidenceLevel:null,
+        LF_lastReviewedDate:null,
+        LF_nextDate:null
+    }
+    return LearningFact.create(lf)
 }
 
 async function getULP(id){
@@ -110,7 +119,6 @@ async function getLearningFact(id){
     })
 }
 
-
 async function addNewLearningPackage(lp){
     const ULP = {
         ULP_title: lp.title,
@@ -125,7 +133,11 @@ async function addNewLearningPackage(lp){
 }
 
 async function addLearningFactToLearningPackage(lf_id, lp_id){
-
+    const lf = await LearningFact.update({ULP_id: lp_id},{
+        where:{
+            LF_ID:lp_id
+        }
+    })
 }
 
 async function editPackageByID(lf_id, changes){
@@ -143,8 +155,8 @@ async function editPackageByID(lf_id, changes){
 }
 
 
-
 module.exports = {
+    addLearningFactToLearningPackage,
     addNewLearningPackage,
     editPackageByID,
     getInactiveLearningPackages,

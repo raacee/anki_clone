@@ -1,5 +1,5 @@
 const express = require('express');
-const { addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
+const { addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
 
 const PORT = 4000
 const app = express()
@@ -64,7 +64,6 @@ app.get('/styles.css', function(req, res){
 	res.sendFile(__dirname + '/angular/dist/styles.css')
 })
 
-
 app.get('/api/learningpackages',
 	async function(req,res){
 	res.json(await getAllLearningPackages())
@@ -87,7 +86,12 @@ app.post('/api/learningfact/:id', async function(req, res){
 	await editPackageByID(req.params['id'], req.body)
 	res.sendStatus(200)
 })
-
+app.post('/api/learningpackage/:id',
+	async function(req,res){
+		const { LF_ID } = await addNewLearningFact(req.body)
+		await addLearningFactToLearningPackage(LF_ID, req.params['id'])
+		res.sendStatus(201)
+	})
 app.listen(PORT, () => {
 	console.log(`Server is running at http://localhost:${PORT}`);
 });

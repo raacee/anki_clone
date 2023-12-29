@@ -36,7 +36,7 @@ export class LearningSessionPageComponent {
   */
 
   /*async*/ngOnInit() {
-    const packageId = +this.route.snapshot.paramMap.get('id')!;
+    const packageId = this.route.snapshot.paramMap.get('id')!;
     this.package = this.learningPackageService.getPackageById(packageId);
   //this.package = await this.getPackageById(packageId);
     this.isLastQuestion = this.package && this.currentFactIndex === this.package.questions.length - 1;
