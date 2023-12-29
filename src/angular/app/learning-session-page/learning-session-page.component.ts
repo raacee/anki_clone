@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LearningPackageService } from '../learning-package.service';
 
-
 @Component({
-  selector: 'app-lesson-list-page',
-  templateUrl: './lesson-list-page.component.html',
-  styleUrls: ['./lesson-list-page.component.css']
+  selector: 'app-learning-session-page',
+  templateUrl: './learning-session-page.component.html',
+  styleUrls: ['./learning-session-page.component.css']
 })
 
-export class LessonListPageComponent implements OnInit {
+export class LearningSessionPageComponent {
   package: any;
   currentQuestionIndex = 0;
   showAnswer = false;

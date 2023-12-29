@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LearningPackageService, LearningPackage } from '../learning-package.service';
 
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-
- 
 
 export class HomePageComponent implements OnInit {
   constructor(
@@ -37,7 +34,7 @@ export class HomePageComponent implements OnInit {
     this.learningPackages = this.learningPackageService.getActiveLearningPackages();
   }
   openLearningSession(packageId: number): void {
-    this.router.navigate(['lesson-list', packageId]);
+    this.router.navigate(['learning-session-page', packageId]);
   }
   
   quotes: string[] = [

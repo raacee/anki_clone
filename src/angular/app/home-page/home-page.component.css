@@ -44,25 +44,7 @@ body {
   color: #333;
   text-align: left;
 }
-.facts {
-  margin-top: 10px;
-  text-align: left;
-}
-.fact {
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 1em;
-  width: 100%; /* Facts take the full width of the package */
-}
-.fact-question {
-  font-weight: bold;
-}
-.fact-answer {
-  font-style: italic;
-  margin-left: 20px;
-}
+
 .hidden {
   display: none;
 }
@@ -78,10 +60,10 @@ body {
 }
 .separator {
   border: 0;
-  height: 1px; /* Thickness of the line */
+  height: 2px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); /* Gradient effect */
-  margin-top: 20px; /* Space above the line */
-  margin-bottom: 20px; /* Space below the line */
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .quote-of-the-week-container {
   margin-top: 20px; /* Space below the navbar */

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LessonListPageComponent } from './lesson-list-page/lesson-list-page.component';
+import { LearningSessionPageComponent } from './learning-session-page/learning-session-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PackageCreationPageComponent } from './package-creation-page/package-creation-page.component';
 import { AchievementsPageComponent } from './achievements-page/achievements-page.component';
@@ -11,7 +11,7 @@ import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learn
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 const routes: Routes = [
-  {path:'lesson-list/:id', component: LessonListPageComponent},
+  { path: 'learning-session-page/:id', component: LearningSessionPageComponent},
   { path: 'non-study-packages', component: NonStudyPackagesComponent },
   { path: 'achievements-page', component: AchievementsPageComponent },
   { path: 'package-creation-page', component: PackageCreationPageComponent },
