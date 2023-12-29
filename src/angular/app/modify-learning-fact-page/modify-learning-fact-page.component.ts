@@ -36,9 +36,22 @@ export class ModifyLearningFactPageComponent implements OnInit {
         this.loadCurrentFact();
       });
     }
+/*
+async getPackageById(id: number): Promise<LearningPackage | undefined> {
+    try {
+        const response = await fetch(`/api/learningpackages/${id}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching package:', error);
+        return undefined;
+    }
+}
+*/
 
-    loadCurrentFact() {
+    /*async*/loadCurrentFact() {
         const pkg: LearningPackage | undefined = this.learningPackageService.getPackageById(this.packageId);
+        //const pkg: LearningPackage | undefined = await this.getPackageById(this.packageId);
         this.currentFact = pkg?.questions.find(fact => fact.id === this.factId);
         
         if (this.currentFact) {

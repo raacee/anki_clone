@@ -23,11 +23,22 @@ export class PackageCreationPageComponent {
       difficultyLevel: [1, [Validators.required, Validators.min(1), Validators.max(20)]]
     });
   }
-
+/*addPackage(newPackage: LearningPackage): Promise<void> {
+    return fetch('/api/learningpackages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newPackage)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Package added:', data))
+    .catch(error => console.error('Error adding package:', error));
+}
+*/
   onSubmit() {
     if (this.packageForm.valid) {
       const newPackage: LearningPackage = {
         id: this.learningPackageService.getNextId(),
+      //id: await this.getNextId(),
         title: this.packageForm.value.title,
         description: this.packageForm.value.desc,
         category: this.packageForm.value.category,
@@ -38,6 +49,7 @@ export class PackageCreationPageComponent {
         isAchieved: false
       };
       this.learningPackageService.addPackage(newPackage);
+    //await this.addPackage(newPackage);
       this.router.navigate(['/non-study-packages']);
     }
   }
