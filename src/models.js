@@ -12,9 +12,9 @@ const sequelize = new Sequelize(
 
 const User = sequelize.define('User', {
     user_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
+        defaultValue: DataTypes.UUIDV4,
     },
     username: {
         type: DataTypes.STRING,
@@ -28,10 +28,10 @@ const User = sequelize.define('User', {
 
 const UserLearningPackage = sequelize.define('UserLearningPackage', {
     ULP_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
         allowNull: false,
+        defaultValue: DataTypes.UUIDV4,
     },
     ULP_title: {
         type: DataTypes.STRING,
@@ -72,10 +72,11 @@ const UserLearningPackage = sequelize.define('UserLearningPackage', {
 });
 
 const LearningFact = sequelize.define('LearningFact', {
-    LF_id: {
-        type: DataTypes.INTEGER,
+    LF_ID: {
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
+        allowNull: false,
+        defaultValue: DataTypes.UUIDV4,
     },
     LF_question: {
         type: DataTypes.STRING,
@@ -111,10 +112,10 @@ const LearningFact = sequelize.define('LearningFact', {
 
 const LearningSession = sequelize.define('LearningSession', {
     LS_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
+        defaultValue: DataTypes.UUIDV4,
     },
     LS_date: {
         type: DataTypes.DATE,
@@ -127,10 +128,10 @@ const LearningSession = sequelize.define('LearningSession', {
     },
 });
 
-UserLearningPackage.hasMany(LearningFact);
-LearningFact.belongsTo(UserLearningPackage);
-User.hasMany(UserLearningPackage);
-UserLearningPackage.belongsTo(User);
+UserLearningPackage.hasMany(LearningFact, {foreignKey:'ULP_id'});
+LearningFact.belongsTo(UserLearningPackage, {foreignKey:'ULP_id'});
+User.hasMany(UserLearningPackage, {foreignKey:'user_id'});
+UserLearningPackage.belongsTo(User, {foreignKey:'user_id'});
 User.hasMany(LearningSession);
 LearningSession.belongsTo(User);
 
