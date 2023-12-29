@@ -3,7 +3,6 @@ const {
     User,
     UserLearningPackage,
     LearningFact,
-    LearningSession
 } = require('../src/models.js')
 
 const learningPackages = [
