@@ -17,9 +17,10 @@ export class HomePageComponent implements OnInit {
 
   learningPackages!: LearningPackage[];
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.setCurrentQuote();
-    this.loadLearningPackages();
+    await this.learningPackageService.getLearningPackages()
+    await this.loadLearningPackages();
  /*   this.route.queryParams.subscribe(params => {
       console.log('Query Params:', params);
       const searchTerm = params['q'];
@@ -30,7 +31,7 @@ export class HomePageComponent implements OnInit {
       }
     });*/
   }
-  loadLearningPackages(): void {
+  async loadLearningPackages(): Promise<void> {
     this.learningPackages = this.learningPackageService.getActiveLearningPackages();
   }
   openLearningSession(packageId: number): void {

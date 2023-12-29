@@ -11,6 +11,8 @@ import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learn
 import { AboutPageComponent } from './about-page/about-page.component';
 
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'learning-session-page/:id', component: LearningSessionPageComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'add-learning-fact-page/:packageId', component: AddLearningFactPageComponent },
   { path: 'about-page', component: AboutPageComponent },
   { path: 'home', component: HomePageComponent },
+  {path : 'login', component:LoginComponent},
+  {path : 'profile', component:ProfileComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 @NgModule({
