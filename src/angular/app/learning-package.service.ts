@@ -166,11 +166,7 @@ export class LearningPackageService {
       pkg.expectedEndDate = new Date(pkg.startDate.getTime() + 14 * 24 * 60 * 60 * 1000); //Today + 2 weeks
     }
   }
- /* searchPackagesByTitle(searchTerm: string): LearningPackage[] { //Search bar
-    return this.learningPackages.filter(p => 
-      p.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }*/
+
   modifyFact(packageId: number, updatedFact: LearningFact): void {
     const pkg = this.learningPackages.find(p => p.id === packageId);
     if (pkg) {
