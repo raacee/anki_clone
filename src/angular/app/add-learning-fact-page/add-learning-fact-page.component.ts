@@ -12,6 +12,8 @@ import { LearningPackageService, LearningFact } from '../learning-package.servic
 export class AddLearningFactPageComponent implements OnInit {
   factForm: FormGroup;
   packageId!: number;
+  selectedImage: File | null = null;
+
 
   constructor(
     private fb: FormBuilder,
@@ -33,10 +35,46 @@ export class AddLearningFactPageComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
-  }  onSubmit() {
+  }
+  onImageSelected(event: Event): void {
+    const element = event.target as HTMLInputElement;
+    const files = element.files;
+    if (files && files.length > 0) {
+      this.selectedImage = files[0];
+    } else {
+      this.selectedImage = null;
+    }
+  }
+
+  /*
+  3. Processus d'Upload :
+Côté Client (Angular) : L'utilisateur télécharge une image via le formulaire. L'image est envoyée au serveur via une requête HTTP POST avec FormData.
+Côté Serveur : Le serveur reçoit l'image, effectue les validations nécessaires, et la stocke soit dans le système de fichiers, soit dans un service cloud.
+Génération de l'URL : Après le stockage, le serveur génère une URL pour l'image.
+Mise à jour de la Base de Données : Le serveur met à jour la base de données PostgreSQL avec la nouvelle URL de l'image pour le fait d'apprentissage spécifique.
+Réponse au Client : Le serveur envoie une réponse au client, éventuellement avec l'URL de l'image ou une confirmation que l'opération a réussi.
+*/
+/*
+4. Utilisation de l'URL de l'Image :
+Dans votre application Angular, après avoir reçu l'URL de l'image du serveur, vous pouvez l'affecter à la propriété image de l'objet LearningFact avant de l'envoyer à la base de données.
+Exemple de Code Côté Serveur (Pseudo-Code) :
+javascript
+Copy code
+app.post('/upload', (req, res) => {
+  // Traiter l'image téléchargée...
+  // Stocker l'image...
+  // Générer l'URL...
+
+  const imageUrl = 'path/to/image.jpg';
+  // Mettre à jour la base de données avec imageUrl...
+
+  res.send({ imageUrl });
+});
+*/
+
+  onSubmit() {
     if (this.factForm.valid) {
       const pkg = this.learningPackageService.getPackageById(this.packageId);
-
       if (pkg) 
       {
         const newFactId = pkg.questions.reduce((max, fact) => fact.id > max ? fact.id : max, 0) + 1; //if no fact ==> 0+1 = 1
@@ -45,7 +83,7 @@ export class AddLearningFactPageComponent implements OnInit {
           id: newFactId,
           question: this.factForm.value.question,
           answer: this.factForm.value.answer,
-          image:null,
+          image:this.selectedImage ? 'path/to/image' : null,
           reviewCount:0,
           confidenceLevel:null,
           lastReviewedDate:null,
