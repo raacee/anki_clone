@@ -22,6 +22,10 @@ export interface LearningPackage {
     lastReviewedDate: Date | null;
     nextDate: Date | null;
   }
+  export interface user{
+    id:number;
+    username:string;
+  }
 
 @Injectable({
   providedIn: 'root'

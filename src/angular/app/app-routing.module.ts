@@ -13,6 +13,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'learning-session-page/:id', component: LearningSessionPageComponent},
@@ -22,11 +23,14 @@ const routes: Routes = [
   { path: 'learning-facts-page/:id', component: LearningFactsPageComponent },
   { path: 'modify-learning-fact-page/:packageId/:factId', component: ModifyLearningFactPageComponent },
   { path: 'add-learning-fact-page/:packageId', component: AddLearningFactPageComponent },
+  { path: 'home-page', component: HomePageComponent },
+
   { path: 'about-page', component: AboutPageComponent },
-  { path: 'home', component: HomePageComponent },
+
   {path : 'login', component:LoginComponent},
   {path : 'profile', component:ProfileComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true,enableTracing: true})],
