@@ -51,6 +51,18 @@ export class ModifyLearningFactPageComponent implements OnInit {
         }
     }
 
+    /*
+    modifyFact(packageId: number, updatedFact: LearningFact): void {
+    fetch(`/api/learningpackages/${packageId}/facts/${updatedFact.id}`, {
+        method: 'PUT', // or 'PATCH' depending on your API design
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedFact)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Fact updated:', data))
+    .catch(error => console.error('Error updating fact:', error));
+}
+*/
     onSubmit() {
         if (this.factForm.valid && this.currentFact) {
             this.currentFact.question = this.factForm.value.question;

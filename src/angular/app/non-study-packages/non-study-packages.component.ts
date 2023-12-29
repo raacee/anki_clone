@@ -50,4 +50,15 @@ export class NonStudyPackagesComponent {
     console.log('Add package to study with ID:', id);
     this.router.navigate(['/']); // Navigate to home page
   }
+  /*
+  addPackageToStudy(id: number): void {
+    fetch(`/api/learningpackages/${id}/add-to-study`, { method: 'PATCH' })
+        .then(response => response.json())
+        .then(() => {
+            console.log(`Package ${id} added to study`);
+            // Update local state or refresh the list from the backend
+        })
+        .catch(error => console.error('Error adding package to study:', error));
+}
+*/
 }
