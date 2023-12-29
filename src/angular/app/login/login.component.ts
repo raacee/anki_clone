@@ -14,6 +14,6 @@ export class LoginComponent {
 
   login() {
     localStorage.setItem('username', this.username);
-    this.router.navigate(['/home']); // Replace with your actual route
+    this.router.navigate(['/home-page']); // Replace with your actual route
   }
 }

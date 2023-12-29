@@ -21,11 +21,11 @@ const routes: Routes = [
   { path: 'learning-facts-page/:id', component: LearningFactsPageComponent },
   { path: 'modify-learning-fact-page/:packageId/:factId', component: ModifyLearningFactPageComponent },
   { path: 'add-learning-fact-page/:packageId', component: AddLearningFactPageComponent },
-  { path: 'home', component: HomePageComponent },
+  { path: 'home-page', component: HomePageComponent },
   {path : 'login', component:LoginComponent},
   {path : 'profile', component:ProfileComponent},
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true,enableTracing: true})],
