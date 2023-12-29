@@ -8,6 +8,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AllLearningPackagesComponent } from './all-learning-packages/all-learning-packages.component';
 import { LessonSearchPageComponent } from './lesson-search-page/lesson-search-page.component';
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [ {path:'lesson-edit-form', component: LessonEditFormComponent},
   {path:'lesson-list', component: LessonListPageComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [ {path:'lesson-edit-form', component: LessonEditFormComp
   { path:'test-page1', component: TestPage1Component },
   { path: 'all-learning-packages', component: AllLearningPackagesComponent },
   { path: 'home', component: HomePageComponent },
+  {path : 'login', component:LoginComponent},
+  {path : 'profile', component:ProfileComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 @NgModule({

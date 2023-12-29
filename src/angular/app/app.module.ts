@@ -18,6 +18,8 @@ import { NumberStepsComponent } from './number-steps/number-steps.component';
 import { NumberEditComponent } from './number-edit/number-edit.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AllLearningPackagesComponent } from './all-learning-packages/all-learning-packages.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AllLearningPackagesComponent } from './all-learning-packages/all-learni
     NumberStepsComponent,
     NumberEditComponent,
     HomePageComponent,
-    AllLearningPackagesComponent
+    AllLearningPackagesComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
