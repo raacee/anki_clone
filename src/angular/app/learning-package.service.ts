@@ -6,6 +6,8 @@ export interface LearningPackage {
     description:string;
     title: string;
     difficultyLevel: number;
+    startDate: Date | null;
+    expectedEndDate: Date | null;
     questions: LearningFact[];
     isAchieved?: boolean;
     isStudyProgram?:boolean;
@@ -34,6 +36,8 @@ export class LearningPackageService {
       description: 'Study module about TypeScript',
       title: 'TypeScript',
       difficultyLevel: 5,
+      startDate: new Date(2023, 11, 24), //24 december
+      expectedEndDate: new Date(2024, 0, 7), //+2 weeks
       questions: [
           { id:1, question: "Qu'est-ce que TypeScript et comment se différencie-t-il de JavaScript?", answer: "TypeScript est un sur-ensemble de JavaScript qui ajoute des types statiques." },
           { id:2, question: "Comment déclarer une variable de type chaîne de caractères en TypeScript?", answer: "let nomVariable: string;" },
@@ -50,6 +54,8 @@ export class LearningPackageService {
       description: 'Study module about NodeJS',
       title: 'NodeJS',
       difficultyLevel: 6,
+      startDate: null,
+      expectedEndDate: null,
       questions: [
           { id:1, question: "Qu'est-ce que Node.js?", answer: "Node.js est un environnement d'exécution JavaScript côté serveur basé sur le moteur V8 de Chrome." },
           { id:2, question: "Comment peut-on lire un fichier de manière asynchrone en Node.js?", answer: "En utilisant fs.readFile() de la bibliothèque fs (file system)." },
@@ -66,6 +72,8 @@ export class LearningPackageService {
     description: 'Study module about Angular',
     title: 'Angular',
     difficultyLevel: 7,
+    startDate: new Date(2023, 11, 24),
+    expectedEndDate: new Date(2024, 0, 7),
     questions: [
         { id:1, question: "Qu'est-ce qu'un composant dans Angular?", answer: "Un composant est une classe avec un décorateur @Component, qui encapsule les données et la logique de présentation." },
         { id:2, question: "Comment créer un service dans Angular?", answer: "En utilisant la commande CLI 'ng generate service nomService'." },
@@ -82,6 +90,8 @@ export class LearningPackageService {
   description: 'Study module about Bootstrap',
   title: 'Bootstrap',
   difficultyLevel: 3,
+  startDate: null,
+  expectedEndDate: null,
   questions: [
       { id:1, question: "Quel est le principal avantage de l'utilisation de Bootstrap?", answer: "Bootstrap facilite la création de designs web réactifs et esthétiques avec moins d'effort." },
       { id:2, question: "Comment intégrer Bootstrap dans un projet web?", answer: "En ajoutant le lien CDN dans le fichier HTML ou en installant via npm." },
@@ -98,6 +108,8 @@ export class LearningPackageService {
   description: 'Study module about API',
   title: 'API',
   difficultyLevel: 8,
+  startDate: new Date(2023, 11, 24),
+  expectedEndDate: new Date(2024, 0, 7),
   questions: [
       { id:1, question: "Qu'est-ce qu'une API RESTful?", answer: "Une API qui suit les principes REST, utilisant des requêtes HTTP pour la communication." },
       { id:2, question: "Comment transmettre des données dans une requête GET?", answer: "En utilisant des paramètres dans l'URL." },
@@ -123,9 +135,7 @@ export class LearningPackageService {
       : 1;
   }
   addPackage(newPackage: LearningPackage) { // for creation
-    console.log("Before adding:", this.learningPackages);
     this.learningPackages.push(newPackage);
-    console.log("After adding:", this.learningPackages);
   }
   deletePackage(id: number): void {
     this.learningPackages = this.learningPackages.filter(p => p.id !== id);
@@ -141,6 +151,8 @@ export class LearningPackageService {
     const pkg = this.learningPackages.find(p => p.id === id);
     if (pkg) {
       pkg.isStudyProgram = true;
+      pkg.startDate = new Date(); //Today
+      pkg.expectedEndDate = new Date(pkg.startDate.getTime() + 14 * 24 * 60 * 60 * 1000); //Today + 2 weeks
     }
   }
  /* searchPackagesByTitle(searchTerm: string): LearningPackage[] { //Search bar
