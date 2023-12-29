@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 export interface LearningPackage {
     id:number;
     category: string;
-    desc:string;
+    description:string;
     title: string;
     difficultyLevel: number;
     questions: LearningFact[];
@@ -31,7 +31,7 @@ export class LearningPackageService {
     {
       id:1,
       category: 'Programming',
-      desc: 'Study module about TypeScript',
+      description: 'Study module about TypeScript',
       title: 'TypeScript',
       difficultyLevel: 5,
       questions: [
@@ -47,7 +47,7 @@ export class LearningPackageService {
     {
       id:2,
       category: 'Back-end Development',
-      desc: 'Study module about NodeJS',
+      description: 'Study module about NodeJS',
       title: 'NodeJS',
       difficultyLevel: 6,
       questions: [
@@ -63,7 +63,7 @@ export class LearningPackageService {
   {
     id:3,
     category: 'Front-end Framework',
-    desc: 'Study module about Angular',
+    description: 'Study module about Angular',
     title: 'Angular',
     difficultyLevel: 7,
     questions: [
@@ -79,7 +79,7 @@ export class LearningPackageService {
 {
   id:4,
   category: 'CSS Framework',
-  desc: 'Study module about Bootstrap',
+  description: 'Study module about Bootstrap',
   title: 'Bootstrap',
   difficultyLevel: 3,
   questions: [
@@ -95,7 +95,7 @@ export class LearningPackageService {
 {
   id:5,
   category: 'Web Development',
-  desc: 'Study module about API',
+  description: 'Study module about API',
   title: 'API',
   difficultyLevel: 8,
   questions: [

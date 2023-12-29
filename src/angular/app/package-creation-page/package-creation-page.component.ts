@@ -29,7 +29,7 @@ export class PackageCreationPageComponent {
       const newPackage: LearningPackage = {
         id: this.learningPackageService.getNextId(),
         title: this.packageForm.value.title,
-        desc: this.packageForm.value.desc,
+        description: this.packageForm.value.desc,
         category: this.packageForm.value.category,
         difficultyLevel: this.packageForm.value.difficultyLevel,
         questions: [],
