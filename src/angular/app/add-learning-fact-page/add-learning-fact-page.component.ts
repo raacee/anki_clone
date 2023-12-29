@@ -72,9 +72,9 @@ app.post('/upload', (req, res) => {
 });
 */
 
-  onSubmit() {
+  async onSubmit() {
     if (this.factForm.valid) {
-      const pkg = this.learningPackageService.getPackageById(this.packageId);
+      const pkg = await this.learningPackageService.getPackageById(this.packageId);
       if (pkg) 
       {
         const newFactId = pkg.questions.reduce((max, fact) => fact.id > max ? fact.id : max, 0) + 1; //if no fact ==> 0+1 = 1

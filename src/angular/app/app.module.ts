@@ -18,6 +18,8 @@ import { ModifyLearningFactPageComponent } from './modify-learning-fact-page/mod
 import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learning-fact-page.component';
 import { LearningSessionPageComponent } from './learning-session-page/learning-session-page.component';
 import { RegisterComponent } from './register/register.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { RegisterComponent } from './register/register.component';
     AddLearningFactPageComponent,
     LearningSessionPageComponent,
     RegisterComponent
+    AboutPageComponent
+
   ],
   imports: [
     BrowserModule,

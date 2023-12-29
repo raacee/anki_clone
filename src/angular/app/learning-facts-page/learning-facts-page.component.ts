@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LearningPackageService, LearningPackage, LearningFact  } from '../learning-package.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LearningFact, LearningPackage, LearningPackageService} from '../learning-package.service';
 
 @Component({
   selector: 'app-learning-facts-page',
@@ -15,10 +15,18 @@ export class LearningFactsPageComponent implements OnInit {
     private route: ActivatedRoute,
     private learningPackageService: LearningPackageService
   ) {}
+  async ngOnInit(): Promise<void> {
 
-  ngOnInit(): void {
-    const packageId = +this.route.snapshot.paramMap.get('id')!;
-    this.package = this.learningPackageService.getPackageById(packageId);
+    const packageId : string | undefined = this.router.url.split('/').pop()
+    this.package = await this.getPackageById(packageId)
+  }
+
+  async getPackageById(id: string | undefined): Promise<LearningPackage> {
+    return JSON.parse(
+        await(
+            await fetch('/api/learningpackages/'+id)
+        ).text()
+    )
   }
   modifyFact(pkg :LearningPackage, fact: LearningFact, event: Event): void {
     event.stopPropagation();

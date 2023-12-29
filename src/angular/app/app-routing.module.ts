@@ -8,6 +8,8 @@ import { NonStudyPackagesComponent } from './non-study-packages/non-study-packag
 import { LearningFactsPageComponent } from './learning-facts-page/learning-facts-page.component';
 import { ModifyLearningFactPageComponent } from './modify-learning-fact-page/modify-learning-fact-page.component';
 import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learning-fact-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -22,6 +24,9 @@ const routes: Routes = [
   { path: 'modify-learning-fact-page/:packageId/:factId', component: ModifyLearningFactPageComponent },
   { path: 'add-learning-fact-page/:packageId', component: AddLearningFactPageComponent },
   { path: 'home-page', component: HomePageComponent },
+
+  { path: 'about-page', component: AboutPageComponent },
+
   {path : 'login', component:LoginComponent},
   {path : 'profile', component:ProfileComponent},
   { path: 'register', component: RegisterComponent },

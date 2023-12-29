@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllLearningPackages } = require("./db.js");
+const { addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
 
 const PORT = 4000
 const app = express()
@@ -40,6 +40,12 @@ app.get('/modify-learning-fact-page/:packageId/:factId', function(req,res){
 app.get('/add-learning-fact-page/:packageId', function(req,res){
 	res.sendFile(__dirname + '/angular/dist/index.html')
 })
+app.get('/login', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/profile', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
 
 
 app.get('/main.js', function(req, res){
@@ -59,10 +65,28 @@ app.get('/styles.css', function(req, res){
 })
 
 
-app.get('/api/learningpackages', async function(req,res){
+app.get('/api/learningpackages',
+	async function(req,res){
 	res.json(await getAllLearningPackages())
 })
-
+app.get('/api/learningpackages/:id',
+	async function(req,res){
+		res.json(await ulpWithQuestions(req.params['id']))
+})
+app.post('/api/learningpackages',
+	async function (req,res){
+		const changes = req.body
+		await addNewLearningPackage(changes)
+		res.sendStatus(201)
+	}
+)
+app.get('/api/non-study-packages', async function(req, res){
+	res.json(await getInactiveLearningPackages())
+})
+app.post('/api/learningfact/:id', async function(req, res){
+	await editPackageByID(req.params['id'], req.body)
+	res.sendStatus(200)
+})
 
 app.listen(PORT, () => {
 	console.log(`Server is running at http://localhost:${PORT}`);

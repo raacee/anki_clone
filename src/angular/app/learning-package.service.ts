@@ -32,7 +32,7 @@ export interface LearningPackage {
 })
 
 export class LearningPackageService {
-  private learningPackages: LearningPackage[] = [
+  private learningPackages: LearningPackage[] = [] /* = [
     {
       id:1,
       category: 'Programming',
@@ -124,13 +124,25 @@ export class LearningPackageService {
   isStudyProgram:true,
 },
  ];
+ */
 
-  constructor() {}
-  getLearningPackages(): LearningPackage[] {
-    return this.learningPackages;
-  }  
-  getPackageById(id: number): LearningPackage | undefined {
-    return this.learningPackages.find(p => p.id === id);
+
+  constructor() {
+      this.getLearningPackages().then((res) =>{
+          this.learningPackages = res
+      })
+  }
+  async getLearningPackages(): Promise<LearningPackage[]> {
+    const response =  await fetch('/api/learningpackages')
+    const text = await response.text()
+    return JSON.parse(text)
+  }
+  async getPackageById(id: number): Promise<LearningPackage | undefined> {
+    return JSON.parse(
+      await(
+          await fetch('/api/learningpackages/'+id)
+      ).text()
+    )
   }
   getNextId(): number {
     return this.learningPackages.length > 0
@@ -158,11 +170,7 @@ export class LearningPackageService {
       pkg.expectedEndDate = new Date(pkg.startDate.getTime() + 14 * 24 * 60 * 60 * 1000); //Today + 2 weeks
     }
   }
- /* searchPackagesByTitle(searchTerm: string): LearningPackage[] { //Search bar
-    return this.learningPackages.filter(p => 
-      p.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }*/
+
   modifyFact(packageId: number, updatedFact: LearningFact): void {
     const pkg = this.learningPackages.find(p => p.id === packageId);
     if (pkg) {
@@ -174,11 +182,11 @@ export class LearningPackageService {
       }
     }
   }
-  addFact(packageId: number, newFact: LearningFact) {
-    const pkg = this.getPackageById(packageId);
+  async addFact(packageId: number, newFact: LearningFact) {
+    const pkg = await this.getPackageById(packageId);
     if (pkg) {
       pkg.questions.push(newFact);
-      console.log("Fact added :",newFact)
+
     }
   }
   updateFact(packageId: number, factId: number, confidenceLevel:number): void {
@@ -203,6 +211,9 @@ export class LearningPackageService {
           break;
       }
     }
+  }
+  async loadLearningPackages(): Promise<void> {
+    this.learningPackages = this.getActiveLearningPackages();
   }
   getNonActiveLearningPackages(): LearningPackage[] {
     return this.learningPackages.filter(p => !p.isStudyProgram);

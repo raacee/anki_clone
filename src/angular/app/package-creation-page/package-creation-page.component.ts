@@ -24,20 +24,41 @@ export class PackageCreationPageComponent {
     });
   }
 
+  async addPackage(newPackage: {
+    expectedEndDate: null;
+    difficultyLevel: any;
+    description: any;
+    title: any;
+    category: any;
+    isAchieved: boolean;
+    startDate: null
+  }): Promise<void> {
+    try {
+      let response = await fetch('/api/learningpackages', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newPackage)
+      });
+      let data: any = await response.json();
+      return console.log('Package added:', data);
+    } catch (error) {
+      return console.error('Error adding package:', error);
+    }
+  }
+
   onSubmit() {
     if (this.packageForm.valid) {
-      const newPackage: LearningPackage = {
-        id: this.learningPackageService.getNextId(),
+      const newPackage = {
         title: this.packageForm.value.title,
         description: this.packageForm.value.desc,
         category: this.packageForm.value.category,
         difficultyLevel: this.packageForm.value.difficultyLevel,
         startDate: null,
         expectedEndDate: null,
-        questions: [],
         isAchieved: false
       };
-      this.learningPackageService.addPackage(newPackage);
+      this.addPackage(newPackage);
+    //await this.addPackage(newPackage);
       this.router.navigate(['/non-study-packages']);
     }
   }

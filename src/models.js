@@ -59,7 +59,7 @@ const UserLearningPackage = sequelize.define('UserLearningPackage', {
         type: DataTypes.DATE,
         defaultValue: null,
     },
-    ULP_isAchieved: {             // If the UPL is achieved or not.
+    ULP_isAchieved: {             
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
