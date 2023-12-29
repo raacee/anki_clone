@@ -65,16 +65,23 @@ async getPackageById(id: number): Promise<LearningPackage | undefined> {
     }
 
     /*
-    modifyFact(packageId: number, updatedFact: LearningFact): void {
-    fetch(`/api/learningpackages/${packageId}/facts/${updatedFact.id}`, {
-        method: 'PUT', // or 'PATCH' depending on your API design
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedFact)
-    })
-    .then(response => response.json())
-    .then(data => console.log('Fact updated:', data))
-    .catch(error => console.error('Error updating fact:', error));
+async modifyFact(packageId: number, updatedFact: LearningFact): Promise<void> {
+  try {
+    const response = await fetch(`/api/learningpackages/${packageId}/facts/${updatedFact.id}`, {
+      method: 'PUT', // or 'PATCH' depending on your API design
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedFact)
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    // Optionally, process the response if needed
+    console.log('Fact updated:', await response.json());
+  } catch (error) {
+    console.error('Error updating fact:', error);
+  }
 }
+
 */
     onSubmit() {
         if (this.factForm.valid && this.currentFact) {
