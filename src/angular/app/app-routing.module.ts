@@ -24,9 +24,7 @@ const routes: Routes = [
   { path: 'modify-learning-fact-page/:packageId/:factId', component: ModifyLearningFactPageComponent },
   { path: 'add-learning-fact-page/:packageId', component: AddLearningFactPageComponent },
   { path: 'home-page', component: HomePageComponent },
-
   { path: 'about-page', component: AboutPageComponent },
-
   {path : 'login', component:LoginComponent},
   {path : 'profile', component:ProfileComponent},
   { path: 'register', component: RegisterComponent },
