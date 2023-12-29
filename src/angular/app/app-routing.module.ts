@@ -8,6 +8,8 @@ import { NonStudyPackagesComponent } from './non-study-packages/non-study-packag
 import { LearningFactsPageComponent } from './learning-facts-page/learning-facts-page.component';
 import { ModifyLearningFactPageComponent } from './modify-learning-fact-page/modify-learning-fact-page.component';
 import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learning-fact-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 const routes: Routes = [
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'learning-facts-page/:id', component: LearningFactsPageComponent },
   { path: 'modify-learning-fact-page/:packageId/:factId', component: ModifyLearningFactPageComponent },
   { path: 'add-learning-fact-page/:packageId', component: AddLearningFactPageComponent },
+  { path: 'about-page', component: AboutPageComponent },
   { path: 'home', component: HomePageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

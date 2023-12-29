@@ -14,6 +14,7 @@ import { LearningFactsPageComponent } from './learning-facts-page/learning-facts
 import { ModifyLearningFactPageComponent } from './modify-learning-fact-page/modify-learning-fact-page.component';
 import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learning-fact-page.component';
 import { LearningSessionPageComponent } from './learning-session-page/learning-session-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { LearningSessionPageComponent } from './learning-session-page/learning-s
     LearningFactsPageComponent,
     ModifyLearningFactPageComponent,
     AddLearningFactPageComponent,
-    LearningSessionPageComponent
+    LearningSessionPageComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,
