@@ -40,6 +40,12 @@ app.get('/modify-learning-fact-page/:packageId/:factId', function(req,res){
 app.get('/add-learning-fact-page/:packageId', function(req,res){
 	res.sendFile(__dirname + '/angular/dist/index.html')
 })
+app.get('/login', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/profile', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
 
 
 app.get('/main.js', function(req, res){
