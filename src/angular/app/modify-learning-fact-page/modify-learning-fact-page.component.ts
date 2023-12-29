@@ -68,6 +68,7 @@ export class ModifyLearningFactPageComponent implements OnInit {
             this.currentFact.question = this.factForm.value.question;
             this.currentFact.answer = this.factForm.value.answer;
             this.learningPackageService.modifyFact(this.packageId, this.currentFact);
+            //await this.modifyFact(this.packageId, this.currentFact);
             this.router.navigate(['/learning-facts-page', this.packageId]);
         }
     }
