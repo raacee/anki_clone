@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.setCurrentQuote();
-    await this.learningPackageService.getLearningPackages()
+    this.learningPackages = await this.getLearningPackages()
     await this.loadLearningPackages();
  /*   this.route.queryParams.subscribe(params => {
       console.log('Query Params:', params);
@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
     });*/
   }
   async loadLearningPackages(): Promise<void> {
-    this.learningPackages = this.learningPackageService.getActiveLearningPackages();
+    this.learningPackages = this.getActiveLearningPackages();
   }
   openLearningSession(packageId: number): void {
     this.router.navigate(['learning-session-page', packageId]);
@@ -55,21 +55,39 @@ export class HomePageComponent implements OnInit {
     return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
   }
 
+  //dirige vers page d'édition du lf
   modifyPackage(id: number, event: Event): void {
     event.stopPropagation();
     this.router.navigate(['/learning-facts-page', id]);
   }
 
+  async getLearningPackages(): Promise<LearningPackage[]> {
+    const response =  await fetch('/api/learningpackages')
+    const text = await response.text()
+    return JSON.parse(text)
+  }
+
+  getActiveLearningPackages(): LearningPackage[] {
+    return this.learningPackages.filter(p => !p.isAchieved && p.isStudyProgram);
+  }
+
   deletePackage(id: number, event: Event): void {
     event.stopPropagation();
-    this.learningPackageService.deletePackage(id);
-    this.loadLearningPackages();
+    this.learningPackages = this.learningPackages.filter(p => p.id !== id);
+    // send delete of package
+    fetch('')
   }
 
   achievePackage(id: number, event: Event): void {
     event.stopPropagation();
     console.log('Achieve package with ID:', id);
-    this.learningPackageService.achievePackage(id);
+
+    const pkg = this.learningPackages.find(p => p.id === id);
+    if (pkg) {
+      pkg.isAchieved = true;
+      console.log(`Package ${id} achieved`, pkg);
+    }
+
     this.loadLearningPackages(); // Refresh
     this.router.navigate(['/achievements-page']);
   }
