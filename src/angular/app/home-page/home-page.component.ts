@@ -21,15 +21,6 @@ export class HomePageComponent implements OnInit {
     this.setCurrentQuote();
     this.learningPackages = await this.getLearningPackages()
     await this.loadLearningPackages();
- /*   this.route.queryParams.subscribe(params => {
-      console.log('Query Params:', params);
-      const searchTerm = params['q'];
-      if (searchTerm) {
-        this.learningPackages = this.learningPackageService.searchPackagesByTitle(searchTerm);
-      } else {
-        this.loadLearningPackages();
-      }
-    });*/
   }
   async loadLearningPackages(): Promise<void> {
     this.learningPackages = this.getActiveLearningPackages();
