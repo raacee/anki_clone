@@ -48,8 +48,6 @@ export class LessonListPageComponent implements OnInit {
     }
   }
   finishPackage() {
-    // Perform any necessary actions for finishing the package
-    // For example, you can navigate back to the home page
     this.router.navigate(['/home']);
   }
 }

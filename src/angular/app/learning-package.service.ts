@@ -143,6 +143,11 @@ export class LearningPackageService {
       pkg.isStudyProgram = true;
     }
   }
+ /* searchPackagesByTitle(searchTerm: string): LearningPackage[] { //Search bar
+    return this.learningPackages.filter(p => 
+      p.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }*/
   updateFact(packageId: number, updatedFact: LearningFact): void {
     const pkgIndex = this.learningPackages.findIndex(p => p.id === packageId);
     if (pkgIndex !== -1) {

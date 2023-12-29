@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LearningPackageService, LearningPackage } from '../learning-package.service';
 
 
@@ -13,6 +13,7 @@ import { LearningPackageService, LearningPackage } from '../learning-package.ser
 
 export class HomePageComponent implements OnInit {
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private learningPackageService: LearningPackageService
   ) { }
@@ -22,6 +23,15 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.setCurrentQuote();
     this.loadLearningPackages();
+ /*   this.route.queryParams.subscribe(params => {
+      console.log('Query Params:', params);
+      const searchTerm = params['q'];
+      if (searchTerm) {
+        this.learningPackages = this.learningPackageService.searchPackagesByTitle(searchTerm);
+      } else {
+        this.loadLearningPackages();
+      }
+    });*/
   }
   loadLearningPackages(): void {
     this.learningPackages = this.learningPackageService.getActiveLearningPackages();
@@ -62,7 +72,7 @@ export class HomePageComponent implements OnInit {
     event.stopPropagation();
     console.log('Achieve package with ID:', id);
     this.learningPackageService.achievePackage(id);
-    this.loadLearningPackages(); // Refresh the list of active packages
-    this.router.navigate(['/achievements-page']); // Navigate to achievements page
+    this.loadLearningPackages(); // Refresh
+    this.router.navigate(['/achievements-page']);
   }
 }
