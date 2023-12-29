@@ -16,7 +16,7 @@ export interface LearningPackage {
     id:number
     question: string;
     answer:string;
-    image: string | null; // default null
+    image?: string | null; // default null and optionnal
     reviewCount: number; // default 0
     confidenceLevel: number | null;
     lastReviewedDate: Date | null;
