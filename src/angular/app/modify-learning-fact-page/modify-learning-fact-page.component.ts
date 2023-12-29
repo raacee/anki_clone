@@ -11,8 +11,8 @@ import { LearningPackageService, LearningPackage, LearningFact } from '../learni
 export class ModifyLearningFactPageComponent implements OnInit {
     factForm: FormGroup;
     currentFact?: LearningFact;
-    packageId: number;
-    factId: number;
+    packageId: string;
+    factId: string;
 
     constructor(
         private fb: FormBuilder,
@@ -20,8 +20,8 @@ export class ModifyLearningFactPageComponent implements OnInit {
         private router: Router,
         private learningPackageService: LearningPackageService
     ) {
-        this.packageId = +this.route.snapshot.params['packageId'];
-        this.factId = +this.route.snapshot.params['factId'];
+        this.packageId = this.route.snapshot.params['packageId'];
+        this.factId = this.route.snapshot.params['factId'];
 
         this.factForm = this.fb.group({
             question: ['', Validators.required],
@@ -31,68 +31,36 @@ export class ModifyLearningFactPageComponent implements OnInit {
 
     ngOnInit(): void {
       this.route.paramMap.subscribe(params => {
-        this.packageId = +params.get('packageId')!;
-        this.factId = +params.get('factId')!;
-        this.loadCurrentFact();
+        this.packageId = this.router.url.split('/')[2]
+        this.factId = this.router.url.split('/')[3]
       });
     }
-/*
-async getPackageById(id: number): Promise<LearningPackage | undefined> {
-    try {
-        const response = await fetch(`/api/learningpackages/${id}`);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching package:', error);
-        return undefined;
-    }
-}
-*/
 
-    /*async*/loadCurrentFact() {
-        const pkg: LearningPackage | undefined = this.learningPackageService.getPackageById(this.packageId);
-        //const pkg: LearningPackage | undefined = await this.getPackageById(this.packageId);
-        this.currentFact = pkg?.questions.find(fact => fact.id === this.factId);
-        
-        if (this.currentFact) {
-            this.factForm.patchValue({
-                question: this.currentFact.question,
-                answer: this.currentFact.answer
-            });
-        } else {
-            this.router.navigate(['/']); // Back to home just in case
+    async modifyFact(factId : string): Promise<void> {
+        const updatedFact = this.factForm.value
+        const res = await fetch(`/api/learningfact/${factId}`, {
+            method: 'POST', // or 'PATCH' depending on your API design
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedFact)
+        })
+        if(res.status === 200){
+            return
+        }
+        else{
+            throw Error('fact not modified and error thrown')
         }
     }
 
-    /*
-async modifyFact(packageId: number, updatedFact: LearningFact): Promise<void> {
-  try {
-    const response = await fetch(`/api/learningpackages/${packageId}/facts/${updatedFact.id}`, {
-      method: 'PUT', // or 'PATCH' depending on your API design
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedFact)
-    });
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    // Optionally, process the response if needed
-    console.log('Fact updated:', await response.json());
-  } catch (error) {
-    console.error('Error updating fact:', error);
-  }
-}
-
-*/
-    onSubmit() {
-        if (this.factForm.valid && this.currentFact) {
-            this.currentFact.question = this.factForm.value.question;
-            this.currentFact.answer = this.factForm.value.answer;
-            this.learningPackageService.modifyFact(this.packageId, this.currentFact);
+    onSubmit():void {
+        if (this.factForm.valid) {
+            this.modifyFact(this.factId);
             //await this.modifyFact(this.packageId, this.currentFact);
             this.router.navigate(['/learning-facts-page', this.packageId]);
         }
     }
+
     goBack() {
       this.router.navigate(['/learning-facts-page', this.packageId]);
     }
+
 }
