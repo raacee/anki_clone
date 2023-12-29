@@ -1,53 +1,69 @@
-const  express = require('express');
+const express = require('express');
+const { getAllLearningPackages } = require("./db.js");
 
-
-const PORT = 3000
+const PORT = 4000
 const app = express()
 
 app.use(express.json());
-console.log(__dirname)
+
 
 app.get('/', function(req, res){
-  res.sendFile('/angular/dist/index.html', {root:__dirname})
+	res.sendFile(__dirname + '/angular/dist/index.html')
 })
+app.get('/home', function(req, res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/non-study-packages', function(req, res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/lesson-list/:id', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/lesson/:id', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/test-page1', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/achievements-page', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/package-creation-page', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/learning-facts-page/:id', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/modify-learning-fact-page/:packageId/:factId', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/add-learning-fact-page/:packageId', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+
 
 app.get('/main.js', function(req, res){
-  res.sendFile(__dirname + '/angular/dist/main.js')
+	res.sendFile(__dirname + '/angular/dist/main.js')
 })
-
+app.get('/vendor.js', function(req, res){
+	res.sendFile(__dirname + '/angular/dist/vendor.js')
+})
 app.get('/polyfills.js', function(req, res){
-  res.sendFile(__dirname + '/angular/dist/polyfills.js')
+	res.sendFile(__dirname + '/angular/dist/polyfills.js')
 })
-
 app.get('/runtime.js', function(req, res){
-  res.sendFile(__dirname + '/angular/dist/runtime.js')
+	res.sendFile(__dirname + '/angular/dist/runtime.js')
 })
-
 app.get('/styles.css', function(req, res){
-  res.sendFile(__dirname + '/angular/dist/styles.css')
+	res.sendFile(__dirname + '/angular/dist/styles.css')
 })
 
-app.get('/api/learningPackages', function(req, res) {
-  client.connect((err, client, done) => {
-    if (err) {
-      console.error('Error acquiring client from pool:', err);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
 
-    client.query('SELECT * FROM LearningPackages', (err, result) => {
-      done(); // Release the client back to the pool
-
-      if (err) {
-        console.error('Error retrieving learning packages:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
-
-      const learningPackages = result.rows;
-      res.json(learningPackages);
-    });
-  });
+app.get('/api/learningpackages', async function(req,res){
+	res.json(await getAllLearningPackages())
 })
+
 
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+	console.log(`Server is running at http://localhost:${PORT}`);
 });

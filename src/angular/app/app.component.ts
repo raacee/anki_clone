@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { LessonEditFormComponent } from './lesson-edit-form/lesson-edit-form.component';
-import { LessonSearchPageComponent } from './lesson-search-page/lesson-search-page.component';
 import { MenuNavBarComponent } from './menu-nav-bar/menu-nav-bar.component';
 
 @Component({

@@ -5,21 +5,29 @@
 
 <hr class="separator">
 
-
-<h3 class="tab-title">Your packages :</h3>
+<h3 class="tab-title">Your study program :</h3>
 
 <div class="packages-container">
-  <div *ngFor="let package of learningPackages" class="package" (click)="toggleFacts(package.title)">
-    <h3 class="package-title">{{ package.title }}</h3>
-    <p class="package-category">Category: {{ package.category }}</p>
-    <p class="package-difficulty">Difficulty Level: {{ package.difficultyLevel }}</p>
-    <p class="package-description">{{ package.description }}</p>
-
-    <div *ngIf="shownFacts[package.title]" class="facts">
-      <div *ngFor="let fact of package.facts" class="fact">
-        <p class="fact-question">{{ fact.question }}</p>
-        <p class="fact-answer">{{ fact.answer }}</p>
+  <div *ngFor="let package of learningPackages" class="package">
+    <div class="package-header">
+      <div (click)="openLearningSession(package.id)" class="package-content">
+        <h3 class="package-title">{{ package.title }}</h3>
+        <p class="package-category">Category: {{ package.category }}</p>
+        <p class="package-difficulty">Difficulty Level: {{ package.difficultyLevel }}</p>
+        <p class="package-description">{{ package.description }}</p>
+      </div>
+      <div class="package-actions">
+        <button (click)="modifyPackage(package.id, $event)" class="action-button">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button (click)="deletePackage(package.id, $event)" class="action-button">
+          <i class="fas fa-trash"></i>
+        </button>
+        <button (click)="achievePackage(package.id, $event)" class="action-button">
+          <i class="fas fa-trophy"></i>
+        </button>
       </div>
     </div>
   </div>
 </div>
+
