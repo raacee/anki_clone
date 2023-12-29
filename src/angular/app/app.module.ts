@@ -25,7 +25,7 @@ import { LearningSessionPageComponent } from './learning-session-page/learning-s
     MenuNavBarComponent,
     HomePageComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
     AchievementsPageComponent,
     PackageCreationPageComponent,
     NonStudyPackagesComponent,
