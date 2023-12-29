@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuNavBarComponent } from './menu-nav-bar/menu-nav-bar.component';
 import { HomePageComponent } from './home-page/home-page.component';
+
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 import { AchievementsPageComponent } from './achievements-page/achievements-page.component';
 import { PackageCreationPageComponent } from './package-creation-page/package-creation-page.component';
 import { NonStudyPackagesComponent } from './non-study-packages/non-study-packages.component';
@@ -21,6 +24,8 @@ import { LearningSessionPageComponent } from './learning-session-page/learning-s
     AppComponent,
     MenuNavBarComponent,
     HomePageComponent,
+    LoginComponent,
+    ProfileComponent
     AchievementsPageComponent,
     PackageCreationPageComponent,
     NonStudyPackagesComponent,
