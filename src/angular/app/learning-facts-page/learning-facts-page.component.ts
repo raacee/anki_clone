@@ -16,7 +16,6 @@ export class LearningFactsPageComponent implements OnInit {
     private learningPackageService: LearningPackageService
   ) {}
   async ngOnInit(): Promise<void> {
-
     const packageId : string | undefined = this.router.url.split('/').pop()
     this.package = await this.getPackageById(packageId)
   }

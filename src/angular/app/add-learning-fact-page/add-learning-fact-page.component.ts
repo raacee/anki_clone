@@ -27,7 +27,8 @@ export class AddLearningFactPageComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.packageId = this.router.url.split('/')[1]
+    this.packageId = this.router.url.split('/')[2]
+    console.log("ID OF PACKAGE IS : "+this.packageId)
   }
   onImageSelected(event: Event): void {
     const element = event.target as HTMLInputElement;
@@ -70,14 +71,13 @@ app.post('/upload', (req, res) => {
       const pkg = await this.getPackageById(this.packageId);
       if (pkg) 
       {
-        const newFactId = pkg.questions.reduce((max, fact) => fact.id > max ? fact.id : max, 0) + 1; //if no fact ==> 0+1 = 1//if facts, ==> last index +1
         const newFact = {
           question: this.factForm.value.question,
           answer: this.factForm.value.answer,
           image:this.selectedImage ? 'path/to/image' : null,
           reviewCount:0,
           confidenceLevel:null,
-          lastReviewedDate:null,
+          lastReviewedDate:new Date(),
           nextDate:null,
         };
         this.addFact(this.packageId, newFact);
@@ -91,7 +91,15 @@ app.post('/upload', (req, res) => {
     }
   }
 
-  async addFact(packageId: string, newFact: { question: any; answer: any; image: string | null; reviewCount: number; confidenceLevel: null; lastReviewedDate: null; nextDate: null; }) {
+  async addFact(packageId: string, newFact: {
+    image: string | null;
+    confidenceLevel: null;
+    question: any;
+    answer: any;
+    reviewCount: number;
+    lastReviewedDate: Date;
+    nextDate: null
+  }) {
     const pkg = await this.getPackageById(packageId);
     if (pkg) {
       const res = await fetch(`/api/learningpackage/${packageId}`, {

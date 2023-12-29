@@ -11,7 +11,7 @@ export interface LearningPackage {
     questions: LearningFact[];
     isAchieved?: boolean;
     isStudyProgram?:boolean;
-    }
+  }
   export interface LearningFact {
     id:number
     question: string;

@@ -101,11 +101,11 @@ const LearningFact = sequelize.define('LearningFact', {
     },
     LF_lastReviewedDate: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
     },
     LF_nextDate: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
         defaultValue: DataTypes.NOW,
     },
 });

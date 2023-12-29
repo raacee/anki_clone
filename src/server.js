@@ -10,7 +10,7 @@ app.use(express.json());
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/angular/dist/index.html')
 })
-app.get('/home', function(req, res){
+app.get('/home-page', function(req, res){
 	res.sendFile(__dirname + '/angular/dist/index.html')
 })
 app.get('/non-study-packages', function(req, res){
@@ -46,7 +46,9 @@ app.get('/login', function(req,res){
 app.get('/profile', function(req,res){
 	res.sendFile(__dirname + '/angular/dist/index.html')
 })
-
+app.get('/about-page', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
 
 app.get('/main.js', function(req, res){
 	res.sendFile(__dirname + '/angular/dist/main.js')

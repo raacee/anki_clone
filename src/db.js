@@ -34,15 +34,15 @@ async function getAllLearningPackages(){
 
 async function addNewLearningFact(lf){
     const LP = {
-        LF_question:  lf.factForm.value.question,
-        LF_answer:  lf.factForm.value.answer,
+        LF_question: lf.question,
+        LF_answer: lf.answer,
         LF_image: lf.selectedImage ? lf.selectedImage : null,
         LF_reviewCount:0,
         LF_confidenceLevel:null,
         LF_lastReviewedDate:null,
         LF_nextDate:null
     }
-    return LearningFact.create(lf)
+    return LearningFact.create(LP)
 }
 
 async function getULP(id){
@@ -156,6 +156,7 @@ async function editPackageByID(lf_id, changes){
 
 
 module.exports = {
+    addNewLearningFact,
     addLearningFactToLearningPackage,
     addNewLearningPackage,
     editPackageByID,
