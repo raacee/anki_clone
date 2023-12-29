@@ -6,14 +6,6 @@ const {
     LearningSession
 } = require('../src/models.js')
 
-UserLearningPackage.hasMany(LearningFact);
-LearningFact.belongsTo(UserLearningPackage, { foreignKey: 'ULP_id', targetKey: 'ULP_id'});
-User.hasMany(UserLearningPackage);
-UserLearningPackage.belongsTo(User, {foreignKey: 'user_id',targetKey: 'user_id'});
-User.hasMany(LearningSession);
-LearningSession.belongsTo(User, { foreignKey: 'user_id',targetKey: 'user_id'});
-
-
 const learningPackages = [
     {
         title: 'TypeScript',
@@ -154,16 +146,23 @@ const learningPackages = [
         isStudyProgram:false,
     },
 ];
+
 async function createLearningPackagesAndFacts() {
     const user = await User.create({ username: 'user1', password: '123' });
+    const userid = user.user_id
     for (const pkg of learningPackages) {
         let startDate = new Date();
         startDate.setHours(1, 0, 0, 0);
         let expectedEndDate= new Date(startDate.getTime() + 2 * 7 * 24 * 60 * 60 * 1000);
+        /*
         if (!pkg.isStudyProgram) {
             startDate = null;
             expectedEndDate = null;
         }
+         */
+        const lastReviewedDate = new Date();
+        lastReviewedDate.setHours(1, 0, 0, 0);
+
         const userLearningPackage = await UserLearningPackage.create({
             ULP_title: pkg.title,
             ULP_desc: pkg.description,
@@ -173,31 +172,31 @@ async function createLearningPackagesAndFacts() {
             ULP_expectedEndDate: expectedEndDate,
             ULP_isAchieved: pkg.isAchieved,
             ULP_isStudyProgram: pkg.isStudyProgram,
-            UserUserId: user.get('user_id'),
+            user_id: userid,
         });
-        const lastReviewedDate = new Date();
-        lastReviewedDate.setHours(1, 0, 0, 0);
+
         for (const q of pkg.questions) {
             await LearningFact.create({
                 LF_question: q.question,
                 LF_answer: q.answer,
                 LF_lastReviewedDate: lastReviewedDate,
                 LF_nextDate: lastReviewedDate,
-                UserLearningPackageULPId: userLearningPackage.get('ULP_id'),
+                ULP_id: userLearningPackage.ULP_id
             });
+            //LearningFact.update({})
             console.log('LearningFact created');
         }
-    }
-}
-async function initializeDatabase(force) {
-    try {
-        await sequelize.sync({force:force});
-        console.log('Tables created successfully!');
-        await createLearningPackagesAndFacts();
-        console.log('Learning packages and facts created successfully!');
-    } catch (error) {
-        console.error('An error occurred:', error);
-    }
-}
-initializeDatabase(true);
 
+    }
+}
+
+
+
+async function initializeDatabase(force) {
+    await sequelize.sync({force:force});
+    console.log('Tables created successfully!');
+    await createLearningPackagesAndFacts();
+    console.log('Learning packages and facts created successfully!');
+}
+
+initializeDatabase(true);
