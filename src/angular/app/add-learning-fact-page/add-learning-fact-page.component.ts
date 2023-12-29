@@ -27,7 +27,6 @@ export class AddLearningFactPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.packageId = +params.get('packageId')!;
-      console.log("HEYYYYYYYYYYYYYYYYYYY",this.packageId)
 
       if (isNaN(this.packageId)) {
         console.error('Invalid package ID');
@@ -36,9 +35,7 @@ export class AddLearningFactPageComponent implements OnInit {
     });
   }  onSubmit() {
     if (this.factForm.valid) {
-      console.log("HEYYYYYYYYYYYYYYYYYYY",this.packageId)
       const pkg = this.learningPackageService.getPackageById(this.packageId);
-      console.log("YOOOOOOOOOOOOOOOOOOOO",pkg)
 
       if (pkg) 
       {

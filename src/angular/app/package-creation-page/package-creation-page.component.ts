@@ -32,6 +32,8 @@ export class PackageCreationPageComponent {
         desc: this.packageForm.value.desc,
         category: this.packageForm.value.category,
         difficultyLevel: this.packageForm.value.difficultyLevel,
+        startDate: null,
+        expectedEndDate: null,
         questions: [],
         isAchieved: false
       };
