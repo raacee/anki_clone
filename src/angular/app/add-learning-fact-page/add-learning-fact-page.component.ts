@@ -44,9 +44,14 @@ export class AddLearningFactPageComponent implements OnInit {
         const newFact: LearningFact = {
           id: newFactId,
           question: this.factForm.value.question,
-          answer: this.factForm.value.answer
+          answer: this.factForm.value.answer,
+          image:null,
+          reviewCount:0,
+          confidenceLevel:null,
+          lastReviewedDate:null,
+          nextDate:null 
         };
-        this.learningPackageService.addFactToPackage(this.packageId, newFact);
+        this.learningPackageService.addFact(this.packageId, newFact);
         this.router.navigate(['/learning-facts-page', this.packageId]);
       }
       else

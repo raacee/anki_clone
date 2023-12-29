@@ -10,7 +10,7 @@ import { LearningPackageService } from '../learning-package.service';
 
 export class LearningSessionPageComponent {
   package: any;
-  currentQuestionIndex = 0;
+  currentFactIndex = 0;
   showAnswer = false;
   isLastQuestion = false;
   showFinish = false;
@@ -24,25 +24,19 @@ export class LearningSessionPageComponent {
   ngOnInit() {
     const packageId = +this.route.snapshot.paramMap.get('id')!;
     this.package = this.learningPackageService.getPackageById(packageId);
-    this.isLastQuestion = this.package && this.currentQuestionIndex === this.package.questions.length - 1;
+    this.isLastQuestion = this.package && this.currentFactIndex === this.package.questions.length - 1;
   }
   toggleAnswer() {
-    if (this.showAnswer) {
-      if (this.isLastQuestion) {
-        this.showFinish = true;
-      } else {
-        this.goToNextFact();
-      }
-    } else {
-      this.showAnswer = true;
-    }
+    this.showAnswer = true;
   }
-  goToNextFact() {
-    if (this.currentQuestionIndex < this.package.questions.length - 1) {
-      this.currentQuestionIndex++;
+  setDifficultyAndGoToNextFact(difficulty: number): void {
+    if (this.currentFactIndex < this.package.questions.length - 1) {
+      this.currentFactIndex++;
+      this.learningPackageService.updateFact(this.package.id, this.currentFactIndex, difficulty);
       this.showAnswer = false;
-      this.isLastQuestion = this.currentQuestionIndex === this.package.questions.length - 1;
+      this.isLastQuestion = this.currentFactIndex === this.package.questions.length - 1;
     } else {
+      this.learningPackageService.updateFact(this.package.id, this.currentFactIndex+1, difficulty);
       this.showFinish = true;
     }
   }
