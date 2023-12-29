@@ -28,7 +28,7 @@ export interface LearningPackage {
 })
 
 export class LearningPackageService {
-  private learningPackages: LearningPackage[] = [
+  private learningPackages: LearningPackage[] = [] /* = [
     {
       id:1,
       category: 'Programming',
@@ -120,10 +120,18 @@ export class LearningPackageService {
   isStudyProgram:true,
 },
  ];
+ */
 
-  constructor() {}
-  getLearningPackages(): LearningPackage[] {
-    return this.learningPackages;
+
+  constructor() {
+      this.getLearningPackages().then((res) =>{
+          this.learningPackages = res
+      })
+  }
+  async getLearningPackages(): Promise<LearningPackage[]> {
+    const response =  await fetch('/api/learningpackages')
+    const text = await response.text()
+    return JSON.parse(text)
   }  
   getPackageById(id: number): LearningPackage | undefined {
     return this.learningPackages.find(p => p.id === id);

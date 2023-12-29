@@ -42,9 +42,15 @@ async function getAllLearningPackages(){
     return res
 }
 
-getAllLearningPackages().then((res)=>{
-    console.log(res)
-})
+async function addNewLearningFact(){
+
+}
+
+async function addNewLearningPackage(){
+
+}
+
+
 
 module.exports = {
     getAllLearningPackages
