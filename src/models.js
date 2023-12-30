@@ -25,8 +25,9 @@ const User = sequelize.define('User', {
         allowNull: false,
     },
     session_id: {
-        type:DataTypes.UUIDV4,
-        allowNull: true
+        type:DataTypes.UUID,
+        allowNull: true,
+        defaultValue: DataTypes.UUIDV4,
     }
 });
 
