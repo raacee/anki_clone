@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LearningPackage, LearningPackageService} from '../learning-package.service';
+import {LearningPackage} from '../learning-package.service';
 
 @Component({
     selector: 'app-learning-session-page',
@@ -20,7 +20,6 @@ export class LearningSessionPageComponent {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private learningPackageService: LearningPackageService,
     ) {
     }
 
@@ -105,7 +104,8 @@ export class LearningSessionPageComponent {
       */
 
 
-    setDifficultyAndGoToNextFact(difficulty: number): void {
+    async setDifficultyAndGoToNextFact(difficulty: number): Promise<void> {
+        await this.updateFact(difficulty);
         if (this.currentFactIndex < this.package.questions.length - 1) {
             this.currentFactIndex++;
             //await this.updateFact(this.package.id, this.currentFactIndex, difficulty);
@@ -114,29 +114,38 @@ export class LearningSessionPageComponent {
         } else {
             this.showFinish = true;
         }
-      this.updateFact(this.package.id + 1, difficulty);
     }
 
-    async updateFact(factId: string, confidenceLevel: number): Promise<void> {
-        const fact = JSON.parse(await (await fetch(`/api/learningfact/${factId}`)).text())
+    async updateFact(confidenceLevel: number): Promise<void> {
+        const fact = this.package.questions[this.currentFactIndex]
         if (fact) {
             fact.reviewCount += 1;
             fact.lastReviewedDate = new Date(); // Today
             fact.confidenceLevel = confidenceLevel;
+            let nextDate;
             switch (confidenceLevel) {
                 case 1:
-                    fact.nextDate = new Date(fact.lastReviewedDate.getTime() + 7 * 24 * 60 * 60 * 1000); // +1 week
+                    nextDate = new Date(fact.lastReviewedDate.getTime() + 7 * 24 * 60 * 60 * 1000); // +1 week
+                    fact.nextDate = nextDate
                     break;
                 case 2:
-                    fact.nextDate = new Date(fact.lastReviewedDate.getTime() + 4 * 24 * 60 * 60 * 1000); // +4 days
+                    nextDate = new Date(fact.lastReviewedDate.getTime() + 4 * 24 * 60 * 60 * 1000); // +4 days
+                    fact.nextDate = nextDate
                     break;
                 case 3:
-                    fact.nextDate = new Date(fact.lastReviewedDate.getTime() + 1 * 24 * 60 * 60 * 1000); // +1 day
+                    nextDate = new Date(fact.lastReviewedDate.getTime() + 1 * 24 * 60 * 60 * 1000); // +1 day
+                    fact.nextDate = nextDate
                     break;
                 case 4:
-                    fact.nextDate = new Date(fact.lastReviewedDate.getTime()); // today
+                    nextDate = new Date(fact.lastReviewedDate.getTime()); // today
+                    fact.nextDate = nextDate
                     break;
             }
+            console.log(fact)
+            await fetch('/api/learningfact/:id',{
+                method:'PATCH',
+                body:JSON.stringify(fact)
+            })
         }
     }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {LearningPackageService, LearningFact, LearningPackage} from '../learning-package.service';
+import {LearningPackage} from '../learning-package.service';
 
 @Component({
   selector: 'app-add-learning-fact-page',
@@ -19,7 +19,6 @@ export class AddLearningFactPageComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private learningPackageService: LearningPackageService
   ) {
     this.factForm = this.fb.group({
       question: ['', Validators.required],

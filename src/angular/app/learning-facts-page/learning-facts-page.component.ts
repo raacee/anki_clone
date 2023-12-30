@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LearningFact, LearningPackage, LearningPackageService} from '../learning-package.service';
+import {LearningFact, LearningPackage} from '../learning-package.service';
 
 @Component({
   selector: 'app-learning-facts-page',
@@ -13,7 +13,6 @@ export class LearningFactsPageComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private learningPackageService: LearningPackageService
   ) {}
   async ngOnInit(): Promise<void> {
     const packageId : string | undefined = this.router.url.split('/').pop()

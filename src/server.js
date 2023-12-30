@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAchievedLearningPackages, addLearningPackageToAchievements, removeLearningPackageFromStudy, addLearningPackageToStudy, deleteFact, getLearningFact, deletePackage, addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
+const { updateFact, getAchievedLearningPackages, addLearningPackageToAchievements, removeLearningPackageFromStudy, addLearningPackageToStudy, deleteFact, getLearningFact, deletePackage, addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
 
 const PORT = 4000
 const app = express()
@@ -84,10 +84,13 @@ app.post('/api/learningpackages',
 app.get('/api/non-study-packages', async function(req, res){
 	res.json(await getInactiveLearningPackages())
 })
-app.post('/api/learningfact/:id', async function(req, res){
+
+/*
+app.patch('/api/learningfact/:id', async function(req, res){
 	await editPackageByID(req.params['id'], req.body)
 	res.sendStatus(200)
 })
+*/
 app.get('/api/learningfact/:id', async function(req, res){
 	const lf = await getLearningFact(req.params['id'])
 	res.json(lf)
@@ -115,7 +118,9 @@ app.patch('/api/learningpackages/:id/achieve', async function(req,res){
 app.get('/api/achieved', async function(req,res){
 	res.json(await getAchievedLearningPackages())
 })
-
+app.patch('/api/learningfact/:id', async function (req, res){
+	await updateFact(req.body)
+})
 
 
 

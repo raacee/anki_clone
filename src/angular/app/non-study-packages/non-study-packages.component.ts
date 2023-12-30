@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LearningPackageService, LearningPackage } from '../learning-package.service';
+import { LearningPackage } from '../learning-package.service';
 
 @Component({
   selector: 'app-non-study-packages',
@@ -10,9 +10,7 @@ import { LearningPackageService, LearningPackage } from '../learning-package.ser
 export class NonStudyPackagesComponent {
   nonStudiedPackages: LearningPackage[] = [];
 
-  constructor(
-    private router: Router,
-    private learningPackageService: LearningPackageService) {}
+  constructor(private router: Router) {}
 
     async ngOnInit(): Promise<void> {
       this.nonStudiedPackages = await this.getNonActiveLearningPackages();
@@ -39,14 +37,7 @@ export class NonStudyPackagesComponent {
         })
         .catch(error => console.error('Error deleting package:', error));
     this.nonStudiedPackages = this.nonStudiedPackages.filter(p => p.id !== id);
-}
-/*
-  addPackageToStudy(id: string, event: Event): void {
-    event.stopPropagation();
-    this.learningPackageService.addPackageToStudy(id);
-    this.router.navigate(['/']); // Navigate to home page
   }
- */
 
   async addPackageToStudy(id: string, event: Event): Promise<void> {
     event.stopPropagation();

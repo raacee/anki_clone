@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LearningPackageService, LearningPackage, LearningFact } from '../learning-package.service';
+import { LearningFact } from '../learning-package.service';
 
 @Component({
     selector: 'app-modify-learning-fact-page',
@@ -18,7 +18,6 @@ export class ModifyLearningFactPageComponent implements OnInit {
         private fb: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private learningPackageService: LearningPackageService
     ) {
         this.packageId = this.route.snapshot.params['packageId'];
         this.factId = this.route.snapshot.params['factId'];

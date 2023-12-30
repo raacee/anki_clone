@@ -191,6 +191,7 @@ export class LearningPackageService {
 
     }
   }
+  /*
   updateFact(packageId: string, factId: string, confidenceLevel:number): void {
     const pkg = this.learningPackages.find(p => p.id === packageId);
     const fact = pkg?.questions.find(f => f.id === factId);
@@ -214,6 +215,7 @@ export class LearningPackageService {
       }
     }
   }
+  */
   async loadLearningPackages(): Promise<void> {
     this.learningPackages = this.getActiveLearningPackages();
   }

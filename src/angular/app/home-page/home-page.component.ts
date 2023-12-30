@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LearningPackageService, LearningPackage } from '../learning-package.service';
+import { LearningPackage } from '../learning-package.service';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +12,6 @@ export class HomePageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private learningPackageService: LearningPackageService
   ) { }
 
   learningPackages!: LearningPackage[];
