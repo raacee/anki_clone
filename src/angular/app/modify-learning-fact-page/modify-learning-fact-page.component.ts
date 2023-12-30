@@ -38,7 +38,7 @@ export class ModifyLearningFactPageComponent implements OnInit {
     async modifyFact(factId : string): Promise<void> {
         const updatedFact = this.factForm.value
         const res = await fetch(`/api/learningfact/${factId}`, {
-            method: 'POST', // or 'PATCH' depending on your API design
+            method: 'PATCH', // or 'PATCH' depending on your API design
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedFact)
         })
