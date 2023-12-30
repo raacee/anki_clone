@@ -11,6 +11,7 @@ export class DarkbuttonComponent {
   active:boolean
   constructor(@Inject(DOCUMENT) private document: Document) {
     this.active = !!localStorage.getItem('dark')
+    this.modeToggle()
   }
 
   isDark(){
