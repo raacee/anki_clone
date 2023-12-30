@@ -19,6 +19,7 @@ import { AddLearningFactPageComponent } from './add-learning-fact-page/add-learn
 import { LearningSessionPageComponent } from './learning-session-page/learning-session-page.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutPageComponent } from './about-page/about-page.component';
+import { DarkbuttonComponent } from './darkbutton/darkbutton.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
     AddLearningFactPageComponent,
     LearningSessionPageComponent,
     RegisterComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    DarkbuttonComponent
 
   ],
   imports: [
