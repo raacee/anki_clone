@@ -62,24 +62,22 @@ export class HomePageComponent implements OnInit {
     return this.learningPackages.filter(p => !p.isAchieved && p.isStudyProgram);
   }
 
-  deletePackage(id: string, event: Event): void {
+  async deletePackage(id: string, event: Event): Promise<void> {
     event.stopPropagation();
     this.learningPackages = this.learningPackages.filter(p => p.id !== id);
     // send delete of package
-    fetch('')
+    await fetch(`/api/learningpackages/${id}/remove-package`,{
+      method:'PATCH'
+    })
   }
 
-  achievePackage(id: string, event: Event): void {
+  async achievePackage(id: string, event: Event): Promise<void> {
     event.stopPropagation();
-    console.log('Achieve package with ID:', id);
-
-    const pkg = this.learningPackages.find(p => p.id === id);
-    if (pkg) {
-      pkg.isAchieved = true;
-      console.log(`Package ${id} achieved`, pkg);
-    }
-
-    this.loadLearningPackages(); // Refresh
-    this.router.navigate(['/achievements-page']);
+    this.learningPackages = this.learningPackages.filter(p => p.id !== id);
+    await fetch(`/api/learningpackages/${id}/achieve`, {
+      method:'PATCH'
+    })
+    // this.loadLearningPackages(); // Refresh
+    // this.router.navigate(['/achievements-page']);
   }
 }

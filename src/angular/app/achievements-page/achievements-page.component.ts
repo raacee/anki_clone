@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LearningPackageService, LearningPackage } from '../learning-package.service';
+import { LearningPackage } from '../learning-package.service';
 
 @Component({
   selector: 'app-achievements-page',
@@ -9,9 +9,17 @@ import { LearningPackageService, LearningPackage } from '../learning-package.ser
 export class AchievementsPageComponent implements OnInit {
   achievedPackages: LearningPackage[] = [];
 
-  constructor(private learningPackageService: LearningPackageService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.achievedPackages = this.learningPackageService.getAchievedLearningPackages();
+  async ngOnInit(): Promise<void> {
+    this.achievedPackages = await this.getAchievedLearningPackages();
+  }
+
+  async getAchievedLearningPackages(){
+    return JSON.parse(
+      await (
+          await fetch('/api/achieved')
+      ).text()
+    )
   }
 }

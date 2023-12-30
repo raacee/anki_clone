@@ -11,13 +11,13 @@
           <p class="package-description">{{ package.description }}</p>
         </div>
         <div class="package-actions">
-          <button (click)="modifyPackage(package.id, $event)" class="action-button">
+          <button (click)="modifyPackage(package.id, $event)" class="btn btn-warning action-button">
             <i class="fas fa-edit"></i> Modify
           </button>
-          <button (click)="deletePackage(package.id, $event)" class="action-button">
+          <button (click)="deletePackage(package.id, $event)" class="btn btn-danger action-button">
             <i class="fas fa-trash"></i> Delete
           </button>
-          <button (click)="addPackageToStudy(package.id, $event)" class="action-button">
+          <button (click)="addPackageToStudy(package.id, $event)" class="btn btn-success action-button">
             <i class="fas fa-plus"></i> Add
           </button>
         </div>

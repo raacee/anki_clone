@@ -154,7 +154,7 @@ async function editPackageByID(lf_id, changes){
     })
 }
 
-async function deletePackage(lf_id){
+async function deleteFact(lf_id){
     await LearningFact.destroy({
         where:{
             LF_ID:lf_id
@@ -162,7 +162,84 @@ async function deletePackage(lf_id){
     })
 }
 
+async function deletePackage(lp_id){
+    await UserLearningPackage.destroy({
+        where:{
+            ULP_id:lp_id
+        }
+    })
+}
+
+async function addLearningPackageToStudy(lp_id){
+    const isStudyProgram = true
+    const startDate = new Date().toISOString() // Convert to ISO string for backend compatibility
+    const expectedEndDate= new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString() // +2 weeks
+    UserLearningPackage.update({
+        ULP_isStudyProgram:isStudyProgram,
+        ULP_startDate: startDate,
+        ULP_expectedEndDate: expectedEndDate
+    },{
+        where:{
+            ULP_id:lp_id
+        }
+    })
+}
+
+async function removeLearningPackageFromStudy(lp_id){
+    const isStudyProgram = false
+    const startDate = null // Convert to ISO string for backend compatibility
+    const expectedEndDate= null
+    UserLearningPackage.update({
+        ULP_isStudyProgram:isStudyProgram,
+        ULP_startDate: startDate,
+        ULP_expectedEndDate: expectedEndDate
+    },{
+        where:{
+            ULP_id:lp_id
+        }
+    })
+}
+
+async function addLearningPackageToAchievements(lp_id){
+    const isStudyProgram = false
+    const startDate = null // Convert to ISO string for backend compatibility
+    const expectedEndDate= null
+    UserLearningPackage.update({
+        ULP_isStudyProgram:isStudyProgram,
+        ULP_startDate: startDate,
+        ULP_expectedEndDate: expectedEndDate,
+        ULP_isAchieved: true
+    },{
+        where:{
+            ULP_id:lp_id
+        }
+    })
+}
+
+async function getAchievedLearningPackages(){
+    const ulp = await UserLearningPackage.findAll({
+        where:{
+            ULP_isAchieved:true
+        }
+    })
+    return {
+        id: ulp.ULP_id,
+        category: ulp.ULP_category,
+        description: ulp.ULP_description,
+        title: ulp.ULP_title,
+        difficultyLevel: ulp.ULP_difficultyLevel,
+        isAchieved: ulp.ULP_isAchieved,
+        isStudyProgram: ulp.ULP_isStudyProgram
+    }
+}
+
+
 module.exports = {
+    getAchievedLearningPackages,
+    addLearningPackageToAchievements,
+    removeLearningPackageFromStudy,
+    addLearningPackageToStudy,
+    deleteFact,
     getLearningFact,
     deletePackage,
     addNewLearningFact,
