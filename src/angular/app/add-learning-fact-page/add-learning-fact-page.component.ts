@@ -101,12 +101,11 @@ app.post('/upload', (req, res) => {
   }) {
     const pkg = await this.getPackageById(packageId);
     if (pkg) {
-      const res = await fetch(`/api/learningpackages/${packageId}`, {
+      await fetch(`/api/learningpackages/${packageId}`, {
         method: 'POST', // or 'PATCH' depending on your API design
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newFact)
       })
-
     }
   }
 
