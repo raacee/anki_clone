@@ -21,13 +21,13 @@ export class LearningFactsPageComponent implements OnInit {
 
   async getPackageById(id: string | undefined): Promise<LearningPackage> {
     return JSON.parse(
-        await(
-            await fetch('/api/learningpackages/'+id, {
-              headers:{
-                'Cache-Control':'no-store'
-              }
-            })
-        ).text()
+      await(
+          await fetch('/api/learningpackages/'+id, {
+            headers:{
+              'Cache-Control':'no-store'
+            }
+          })
+      ).text()
     )
   }
   modifyFact(pkg :LearningPackage, fact: LearningFact, event: Event): void {
@@ -38,12 +38,12 @@ export class LearningFactsPageComponent implements OnInit {
     this.router.navigate(['/add-learning-fact-page', id]);
   }
   async deleteFact(factId: string): Promise<void>{
-    await fetch('/api/learningfact/'+factId, {
-      method:'DELETE'
-    })
     const fact : any = this.package?.questions.find(function(elem){
       return elem.id === factId
     })
     this.package?.questions.splice(this.package?.questions.indexOf(fact), 1)
+    await fetch('/api/learningfact/'+factId, {
+      method:'DELETE'
+    })
   }
 }
