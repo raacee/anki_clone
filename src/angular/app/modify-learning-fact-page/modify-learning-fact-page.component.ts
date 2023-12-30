@@ -10,7 +10,6 @@ import { LearningFact } from '../learning-package.service';
 })
 export class ModifyLearningFactPageComponent implements OnInit {
     factForm: FormGroup;
-    currentFact?: LearningFact;
     packageId: string;
     factId: string;
 
