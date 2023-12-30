@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit {
   async loadLearningPackages(): Promise<void> {
     this.learningPackages = this.getActiveLearningPackages();
   }
-  openLearningSession(packageId: number): void {
+  openLearningSession(packageId: string): void {
     this.router.navigate(['learning-session-page', packageId]);
   }
   
@@ -47,7 +47,7 @@ export class HomePageComponent implements OnInit {
   }
 
   //dirige vers page d'édition du lf
-  modifyPackage(id: number, event: Event): void {
+  modifyPackage(id: string, event: Event): void {
     event.stopPropagation();
     this.router.navigate(['/learning-facts-page', id]);
   }

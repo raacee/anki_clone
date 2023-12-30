@@ -1,5 +1,5 @@
 const express = require('express');
-const { deletePackage, addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
+const { getLearningFact, deletePackage, addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
 
 const PORT = 4000
 const app = express()
@@ -87,6 +87,10 @@ app.get('/api/non-study-packages', async function(req, res){
 app.post('/api/learningfact/:id', async function(req, res){
 	await editPackageByID(req.params['id'], req.body)
 	res.sendStatus(200)
+})
+app.get('/api/learningfact/:id', async function(req, res){
+	const lf = await getLearningFact(req.params['id'])
+	res.json(lf)
 })
 app.post('/api/learningpackage/:id',
 	async function(req,res){

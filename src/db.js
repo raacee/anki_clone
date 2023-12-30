@@ -163,6 +163,7 @@ async function deletePackage(lf_id){
 }
 
 module.exports = {
+    getLearningFact,
     deletePackage,
     addNewLearningFact,
     addLearningFactToLearningPackage,
