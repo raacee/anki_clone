@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { enable as enableDarkMode, disable as disableDarkMode } from 'darkreader';
+import { setFetchMethod, enable as enableDarkMode, disable as disableDarkMode } from 'darkreader';
 
 @Component({
   selector: 'app-darkbutton',
@@ -12,6 +12,7 @@ export class DarkbuttonComponent {
   constructor(@Inject(DOCUMENT) private document: Document) {
     this.active = !!localStorage.getItem('dark')
     this.modeToggle()
+    setFetchMethod(window.fetch)
   }
 
   isDark(){
@@ -33,7 +34,6 @@ export class DarkbuttonComponent {
   }
 
   dark() {
-    this.document.querySelector('body')?.classList.add('dark-mode')
     enableDarkMode({
       brightness: 100,
       contrast: 100,
@@ -43,7 +43,6 @@ export class DarkbuttonComponent {
   }
 
   light() {
-    this.document.querySelector('body')?.classList.remove('dark-mode')
     disableDarkMode()
     localStorage.setItem('dark','false')
   }
