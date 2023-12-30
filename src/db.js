@@ -1,4 +1,4 @@
-const { UserLearningPackage, LearningFact } = require('./models.js')
+const { User, UserLearningPackage, LearningFact } = require('./models.js')
 
 async function fetchAllLearningPackages(){
     return await UserLearningPackage.findAll()
@@ -268,8 +268,40 @@ async function getAchievedLearningPackages(){
     return res
 }
 
+async function checkPassword(username, password){
+    const { user_id } = await User.findOne({
+        where:{
+            username:username,
+            password:password
+        }
+    })
+    if(user_id){
+        await User.update({session_id:""},{
+            where:{
+                username:username
+            }
+        })
+        return true
+    }
+    else return false
+}
+
+async function addNewUser(username, password){
+    const isNotAvailable = await User.findOne({
+        where:{
+            username:username
+        }
+    })
+    if(isNotAvailable){
+        return false
+    }
+    const user = await User.create({username, password})
+    return user.session_id
+}
 
 module.exports = {
+    addNewUser,
+    checkPassword,
     updateFact,
     getAchievedLearningPackages,
     addLearningPackageToAchievements,
