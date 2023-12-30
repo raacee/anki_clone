@@ -23,7 +23,11 @@ export class LearningFactsPageComponent implements OnInit {
   async getPackageById(id: string | undefined): Promise<LearningPackage> {
     return JSON.parse(
         await(
-            await fetch('/api/learningpackages/'+id)
+            await fetch('/api/learningpackages/'+id, {
+              headers:{
+                'Cache-Control':'no-store'
+              }
+            })
         ).text()
     )
   }
@@ -31,8 +35,12 @@ export class LearningFactsPageComponent implements OnInit {
     event.stopPropagation();
     this.router.navigate(['/modify-learning-fact-page', pkg.id, fact.id]);
   }
-  addFact(id:number): void {
-    console.log('ID IS : '+id)
+  addFact(id:string): void {
     this.router.navigate(['/add-learning-fact-page', id]);
+  }
+  async deleteFact(factId: string): Promise<void>{
+    await fetch('/api/learningfact/'+factId, {
+      method:'DELETE'
+    })
   }
 }

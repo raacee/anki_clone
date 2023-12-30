@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LearningPackageService } from '../learning-package.service';
+import {LearningPackage, LearningPackageService} from '../learning-package.service';
 
 @Component({
   selector: 'app-learning-session-page',
@@ -35,9 +35,17 @@ export class LearningSessionPageComponent {
   }
   */
 
+  async getPackageById(id: string): Promise<LearningPackage | undefined> {
+    return JSON.parse(
+        await(
+            await fetch('/api/learningpackages/'+id)
+        ).text()
+    )
+  }
+
   /*async*/ngOnInit() {
     const packageId = this.route.snapshot.paramMap.get('id')!;
-    this.package = this.learningPackageService.getPackageById(packageId);
+    this.package = this.getPackageById(packageId);
   //this.package = await this.getPackageById(packageId);
     this.isLastQuestion = this.package && this.currentFactIndex === this.package.questions.length - 1;
   }
@@ -92,19 +100,21 @@ async updateFact(packageId: number, factId: number, confidenceLevel: number): Pr
   */
 
 
-  /*async*/setDifficultyAndGoToNextFact(difficulty: number): void {
-    if (this.currentFactIndex < this.package.questions.length - 1) {
-      this.currentFactIndex++;
-      this.learningPackageService.updateFact(this.package.id, this.currentFactIndex, difficulty);
-    //await this.updateFact(this.package.id, this.currentFactIndex, difficulty);
-      this.showAnswer = false;
-      this.isLastQuestion = this.currentFactIndex === this.package.questions.length - 1;
-    } else {
-      this.learningPackageService.updateFact(this.package.id, this.currentFactIndex+1, difficulty);
-    //await this.updateFact(this.package.id, this.currentFactIndex, difficulty);
-      this.showFinish = true;
-    }
-  }
+  // /*async*/setDifficultyAndGoToNextFact(difficulty: number): void {
+  //   if (this.currentFactIndex < this.package.questions.length - 1) {
+  //     this.currentFactIndex++;
+  //     this.learningPackageService.updateFact(this.package.id, this.currentFactIndex, difficulty);
+  //   //await this.updateFact(this.package.id, this.currentFactIndex, difficulty);
+  //     this.showAnswer = false;
+  //     this.isLastQuestion = this.currentFactIndex === this.package.questions.length - 1;
+  //   } else {
+  //     this.learningPackageService.updateFact(this.package.id, this.currentFactIndex+1, difficulty);
+  //   //await this.updateFact(this.package.id, this.currentFactIndex, difficulty);
+  //     this.showFinish = true;
+  //   }
+  // }
+
+
   finishPackage() {
     this.router.navigate(['/home']);
   }

@@ -1,5 +1,5 @@
 const express = require('express');
-const { addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
+const { deletePackage, addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
 
 const PORT = 4000
 const app = express()
@@ -93,7 +93,13 @@ app.post('/api/learningpackage/:id',
 		const { LF_ID } = await addNewLearningFact(req.body)
 		await addLearningFactToLearningPackage(LF_ID, req.params['id'])
 		res.sendStatus(201)
-	})
+})
+app.delete('/api/learningfact/:id', async function(req,res){
+	await deletePackage(req.params['id'])
+})
+
+
+
 app.listen(PORT, () => {
 	console.log(`Server is running at http://localhost:${PORT}`);
 });

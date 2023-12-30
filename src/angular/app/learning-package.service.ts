@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface LearningPackage {
-    id:number;
+    id:string;
     category: string;
     description:string;
     title: string;
@@ -13,7 +13,7 @@ export interface LearningPackage {
     isStudyProgram?:boolean;
   }
   export interface LearningFact {
-    id:number
+    id:string
     question: string;
     answer:string;
     image?: string | null; // default null and optionnal
@@ -144,25 +144,27 @@ export class LearningPackageService {
       ).text()
     )
   }
+  /*
   getNextId(): number {
     return this.learningPackages.length > 0
       ? Math.max(...this.learningPackages.map(p => p.id)) + 1
       : 1;
   }
+  */
   addPackage(newPackage: LearningPackage) { // for creation
     this.learningPackages.push(newPackage);
   }
-  deletePackage(id: number): void {
+  deletePackage(id: string): void {
     this.learningPackages = this.learningPackages.filter(p => p.id !== id);
   }
-  achievePackage(id: number): void {
+  achievePackage(id: string): void {
     const pkg = this.learningPackages.find(p => p.id === id);
     if (pkg) {
       pkg.isAchieved = true;
       console.log(`Package ${id} achieved`, pkg);
     }
   }
-  addPackageToStudy(id: number): void {
+  addPackageToStudy(id: string): void {
     const pkg = this.learningPackages.find(p => p.id === id);
     if (pkg) {
       pkg.isStudyProgram = true;
@@ -171,7 +173,7 @@ export class LearningPackageService {
     }
   }
 
-  modifyFact(packageId: number, updatedFact: LearningFact): void {
+  modifyFact(packageId: string, updatedFact: LearningFact): void {
     const pkg = this.learningPackages.find(p => p.id === packageId);
     if (pkg) {
       const fact = pkg.questions.find(f => f.id === updatedFact.id);
@@ -189,7 +191,7 @@ export class LearningPackageService {
 
     }
   }
-  updateFact(packageId: number, factId: number, confidenceLevel:number): void {
+  updateFact(packageId: string, factId: string, confidenceLevel:number): void {
     const pkg = this.learningPackages.find(p => p.id === packageId);
     const fact = pkg?.questions.find(f => f.id === factId);
     if (fact) {

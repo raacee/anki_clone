@@ -24,11 +24,11 @@ export class NonStudyPackagesComponent {
     return JSON.parse(text)
 }
 
-  modifyPackage(id: number, event: Event): void {
+  modifyPackage(id: string, event: Event): void {
     event.stopPropagation();
     this.router.navigate(['/learning-facts-page', id]);
   }
-  deletePackage(id: number, event: Event): void {
+  deletePackage(id: string, event: Event): void {
     event.stopPropagation();
     this.learningPackageService.deletePackage(id);
     this.nonStudiedPackages = this.nonStudiedPackages.filter(p => p.id !== id);
@@ -44,7 +44,7 @@ export class NonStudyPackagesComponent {
         .catch(error => console.error('Error deleting package:', error));
 }
 */
-  addPackageToStudy(id: number, event: Event): void {
+  addPackageToStudy(id: string, event: Event): void {
     event.stopPropagation();
     this.learningPackageService.addPackageToStudy(id);
     console.log('Add package to study with ID:', id);

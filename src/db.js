@@ -135,7 +135,7 @@ async function addNewLearningPackage(lp){
 async function addLearningFactToLearningPackage(lf_id, lp_id){
     const lf = await LearningFact.update({ULP_id: lp_id},{
         where:{
-            LF_ID:lp_id
+            LF_ID:lf_id
         }
     })
 }
@@ -154,8 +154,16 @@ async function editPackageByID(lf_id, changes){
     })
 }
 
+async function deletePackage(lf_id){
+    await LearningFact.destroy({
+        where:{
+            LF_ID:lf_id
+        }
+    })
+}
 
 module.exports = {
+    deletePackage,
     addNewLearningFact,
     addLearningFactToLearningPackage,
     addNewLearningPackage,

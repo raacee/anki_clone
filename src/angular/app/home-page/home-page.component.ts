@@ -62,14 +62,14 @@ export class HomePageComponent implements OnInit {
     return this.learningPackages.filter(p => !p.isAchieved && p.isStudyProgram);
   }
 
-  deletePackage(id: number, event: Event): void {
+  deletePackage(id: string, event: Event): void {
     event.stopPropagation();
     this.learningPackages = this.learningPackages.filter(p => p.id !== id);
     // send delete of package
     fetch('')
   }
 
-  achievePackage(id: number, event: Event): void {
+  achievePackage(id: string, event: Event): void {
     event.stopPropagation();
     console.log('Achieve package with ID:', id);
 
