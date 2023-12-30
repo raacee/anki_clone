@@ -1,5 +1,5 @@
 const express = require('express');
-const { updateFact, getAchievedLearningPackages, addLearningPackageToAchievements, removeLearningPackageFromStudy, addLearningPackageToStudy, deleteFact, getLearningFact, deletePackage, addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
+const { addNewUser, checkPassword, updateFact, getAchievedLearningPackages, addLearningPackageToAchievements, removeLearningPackageFromStudy, addLearningPackageToStudy, deleteFact, getLearningFact, deletePackage, addNewLearningFact, addLearningFactToLearningPackage, addNewLearningPackage, getAllLearningPackages, ulpWithQuestions, getInactiveLearningPackages, editPackageByID } = require("./db.js");
 
 const PORT = 4000
 const app = express()
@@ -41,6 +41,9 @@ app.get('/add-learning-fact-page/:packageId', function(req,res){
 	res.sendFile(__dirname + '/angular/dist/index.html')
 })
 app.get('/login', function(req,res){
+	res.sendFile(__dirname + '/angular/dist/index.html')
+})
+app.get('/register', function(req,res){
 	res.sendFile(__dirname + '/angular/dist/index.html')
 })
 app.get('/profile', function(req,res){
@@ -121,6 +124,29 @@ app.get('/api/achieved', async function(req,res){
 app.patch('/api/learningfact', async function (req, res){
 	await updateFact(req.body)
 })
+app.post('/api/login', async function(req,res){
+	const {username, password} = req.body
+	const correctPassword = await checkPassword(username,password)
+	if(correctPassword){
+		res.sendStatus(201)
+	}
+	else{
+		res.sendStatus(401)
+	}
+})
+
+app.post('/api/signup', async function(req,res){
+	const {username, password} = req.body
+	const isAvailable = await addNewUser(username,password)
+	if (!isAvailable){
+		res.sendStatus(401)
+	}
+	else{
+		res.sendStatus(201)
+	}
+})
+
+
 
 
 
