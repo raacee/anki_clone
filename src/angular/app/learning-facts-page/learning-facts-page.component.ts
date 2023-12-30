@@ -42,5 +42,9 @@ export class LearningFactsPageComponent implements OnInit {
     await fetch('/api/learningfact/'+factId, {
       method:'DELETE'
     })
+    const fact : any = this.package?.questions.find(function(elem){
+      return elem.id === factId
+    })
+    this.package?.questions.splice(this.package?.questions.indexOf(fact), 1)
   }
 }
