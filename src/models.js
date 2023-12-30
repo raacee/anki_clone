@@ -24,6 +24,10 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    session_id: {
+        type:DataTypes.UUIDV4,
+        allowNull: true
+    }
 });
 
 const UserLearningPackage = sequelize.define('UserLearningPackage', {
