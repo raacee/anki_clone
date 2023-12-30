@@ -118,7 +118,7 @@ app.patch('/api/learningpackages/:id/achieve', async function(req,res){
 app.get('/api/achieved', async function(req,res){
 	res.json(await getAchievedLearningPackages())
 })
-app.patch('/api/learningfact/:id', async function (req, res){
+app.patch('/api/learningfact', async function (req, res){
 	await updateFact(req.body)
 })
 

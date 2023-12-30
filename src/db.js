@@ -45,6 +45,20 @@ async function addNewLearningFact(lf){
     return LearningFact.create(LP)
 }
 
+async function updateFact(lf){
+    const lf_obj = {
+        LF_reviewCount:lf.reviewCount,
+        LF_confidenceLevel:lf.confidenceLevel,
+        LF_lastReviewedDate:lf.lastReviewedDate,
+        LF_nextDate:lf.nextDate
+    }
+    await LearningFact.update(lf_obj,{
+        where:{
+            LF_ID:lf.id
+        }
+    })
+}
+
 async function getULP(id){
     return await UserLearningPackage.findOne({
         where:{
@@ -168,6 +182,11 @@ async function deletePackage(lp_id){
             ULP_id:lp_id
         }
     })
+    await LearningFact.destroy({
+        where:{
+            ULP_id:lp_id
+        }
+    })
 }
 
 async function addLearningPackageToStudy(lp_id){
@@ -251,6 +270,7 @@ async function getAchievedLearningPackages(){
 
 
 module.exports = {
+    updateFact,
     getAchievedLearningPackages,
     addLearningPackageToAchievements,
     removeLearningPackageFromStudy,
