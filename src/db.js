@@ -216,13 +216,28 @@ async function addLearningPackageToAchievements(lp_id){
     })
 }
 
+async function removeLearningPackageFromAchievements(lp_id){
+    const isStudyProgram = false
+
+    UserLearningPackage.update({
+        ULP_isStudyProgram:isStudyProgram,
+        ULP_isAchieved: true
+    },{
+        where:{
+            ULP_id:lp_id
+        }
+    })
+}
+
 async function getAchievedLearningPackages(){
-    const ulp = await UserLearningPackage.findAll({
+    const ulps = await UserLearningPackage.findAll({
         where:{
             ULP_isAchieved:true
         }
     })
-    return {
+    const res = []
+    for(const ulp of ulps)
+    res.push({
         id: ulp.ULP_id,
         category: ulp.ULP_category,
         description: ulp.ULP_description,
@@ -230,7 +245,8 @@ async function getAchievedLearningPackages(){
         difficultyLevel: ulp.ULP_difficultyLevel,
         isAchieved: ulp.ULP_isAchieved,
         isStudyProgram: ulp.ULP_isStudyProgram
-    }
+    })
+    return res
 }
 
 
