@@ -79,12 +79,14 @@ app.post('/upload', (req, res) => {
           lastReviewedDate:new Date(),
           nextDate:null,
         };
-        this.addFact(this.packageId, newFact);
-        this.router.navigate(['/learning-facts-page', this.packageId]);
+        await this.addFact(this.packageId, newFact);
+        window.location.href = '/learning-facts-page/'+this.packageId
+        // this.router.navigate(['/learning-facts-page', this.packageId]);
       }
       else
       {
         console.error('Package not found');
+        window.location.href = '/'
         this.router.navigate(['/']);
       }
     }

@@ -188,8 +188,6 @@ async function addLearningFactToLearningPackage(lf_id, lp_id){
 }
 
 async function editPackageByID(lf_id, changes){
-    console.log('CHANGES ARE : ')
-    console.log(changes)
     const changes_LF = {
         LF_answer: changes.answer,
         LF_question: changes.question

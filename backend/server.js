@@ -107,12 +107,12 @@ app.get('/api/non-study-packages', async function (req, res) {
     res.json(await getInactiveLearningPackages())
 })
 
-/*
+
 app.patch('/api/learningfact/:id', async function(req, res){
 	await editPackageByID(req.params['id'], req.body)
 	res.sendStatus(200)
 })
-*/
+
 app.get('/api/learningfact/:id', async function (req, res) {
     const lf = await getLearningFact(req.params['id'])
     res.json(lf)

@@ -51,8 +51,11 @@ export class ModifyLearningFactPageComponent implements OnInit {
 
     onSubmit():void {
         if (this.factForm.valid) {
-            this.modifyFact(this.factId);
+            this.modifyFact(this.factId).then((res)=>{
+                window.location.href = '/learning-facts-page/'+this.packageId
+            });
             //await this.modifyFact(this.packageId, this.currentFact);
+
             this.router.navigate(['/learning-facts-page', this.packageId]);
         }
     }
