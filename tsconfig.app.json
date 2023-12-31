@@ -8,7 +8,7 @@
     ]
   },
   "files": [
-    "src/angular/main.ts"
+    "frontend/main.ts"
   ],
   "include": [
     "src/**/*.d.ts"

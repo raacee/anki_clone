@@ -8,7 +8,7 @@
     "build": "ng build --output-hashing none",
     "watch": "ng build --watch --configuration development --output-hashing none",
     "test": "ng test",
-    "serve": "node src/server.js"
+    "serve": "node backend/server.js"
   },
   "private": true,
   "dependencies": {

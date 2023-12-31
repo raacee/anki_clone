@@ -3,7 +3,7 @@ const {
     User,
     UserLearningPackage,
     LearningFact,
-} = require('../src/models.js')
+} = require('../backend/models.js')
 
 const learningPackages = [
     {

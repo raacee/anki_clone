@@ -8,65 +8,65 @@ app.use(express.json());
 
 
 app.get('/', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/home-page', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/non-study-packages', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/lesson-list/:id', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/lesson/:id', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/test-page1', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/achievements-page', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/package-creation-page', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/learning-facts-page/:id', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/modify-learning-fact-page/:packageId/:factId', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/add-learning-fact-page/:packageId', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/login', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/register', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/profile', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 app.get('/about-page', function(req,res){
-	res.sendFile(__dirname + '/angular/dist/index.html')
+	res.sendFile('index.html', {root : './frontend/dist'})
 })
 
 app.get('/main.js', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/main.js')
+	res.sendFile('main.js', {root : './frontend/dist'})
 })
 app.get('/vendor.js', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/vendor.js')
+	res.sendFile('vendor.js', {root : './frontend/dist'})
 })
 app.get('/polyfills.js', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/polyfills.js')
+	res.sendFile('polyfills.js', {root : './frontend/dist'})
 })
 app.get('/runtime.js', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/runtime.js')
+	res.sendFile('runtime.js', {root : './frontend/dist'})
 })
 app.get('/styles.css', function(req, res){
-	res.sendFile(__dirname + '/angular/dist/styles.css')
+	res.sendFile('styles.css', {root : './frontend/dist'})
 })
 
 app.get('/api/learningpackages',
