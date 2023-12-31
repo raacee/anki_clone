@@ -121,5 +121,5 @@ When the user clicks on a learning package from its study program (home), it lau
 
 ### <p align="center">Login page</p>
 When the user goes on the website, he is directed to the login page where he need sto put his username and password. After logging in he is directed to the home page.
-![Login Page](https://github.com/raacee/anki_clone/blob/main/images/login_page.PNG)<p align="center">*Login Page*</p>
+![Login Page](https://github.com/raacee/anki_clone/blob/main/images/login_page.png)<p align="center">*Login Page*</p>
 
