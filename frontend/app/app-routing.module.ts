@@ -27,7 +27,7 @@ const routes: Routes = [
   {path : 'login', component:LoginComponent},
   {path : 'profile', component:ProfileComponent},
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/home-page', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true,enableTracing: true})],
