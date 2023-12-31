@@ -2,8 +2,8 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize(
     'anki_clone',
-    'anki',
-    'anki_clone',
+    'postgres',
+    null,
     {
         host: 'localhost',
         port: 5432,
