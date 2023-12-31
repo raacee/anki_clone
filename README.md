@@ -1,5 +1,13 @@
 # Anki clone
 
+## Tech stack & libraries
+- Angular
+- NodeJS
+- ExpressJS
+- Postgres
+- Sequelize
+- LocalStorage for the dark mode (darkreader package)
+
 ## Documentation
 ### <p align="center">Home</p>
 ![Home page](https://github.com/raacee/anki_clone/blob/main/images/1homepage.PNG)<p align="center">*Home page*</p>
