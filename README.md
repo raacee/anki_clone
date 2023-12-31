@@ -124,7 +124,7 @@ When the user goes on the website, he is directed to the login page where he nee
 ![Login Page](https://github.com/raacee/anki_clone/blob/main/images/login_page.png)<p align="center">*Login Page*</p>
 
 ### <p align="center">Profile page</p>
-If the user goes to Settings : 
+If the user goes to Settings : <br></br>
 ![Settings](https://github.com/raacee/anki_clone/blob/main/images/settings.png)<p align="center">*Settings*</p>
 
 The user will be directed to his own profile page : 
