@@ -118,3 +118,8 @@ When the user clicks on a learning package from its study program (home), it lau
 ![Learning fact's answer and difficulty of the learning fact](https://github.com/raacee/anki_clone/blob/main/images/100answerlearningfact.PNG)<p align="center">*Learning fact's answer and difficulty of the learning fact*</p>
 
 ![End of the learning session](https://github.com/raacee/anki_clone/blob/main/images/100finishlearningfact.PNG)<p align="center">*End of the learning session*</p>
+
+### <p align="center">Login page</p>
+When the user goes on the website, he is directed to the login page where he need sto put his username and password. After logging in he is directed to the home page.
+![Login Page](https://github.com/raacee/anki_clone/blob/main/images/login_page.PNG)<p align="center">*Login Page*</p>
+
