@@ -83,7 +83,7 @@ When the user submit the form, the learning fact is created.
 
 ![Field required](https://github.com/raacee/anki_clone/blob/main/images/52addlearningfact.PNG)<p align="center">*Field required*</p>![Submit button activated](https://github.com/raacee/anki_clone/blob/main/images/53addlearningfact.PNG)<p align="center">*Submit button activated*</p>
 
-![The learning fact is created](https://github.com/raacee/anki_clone/blob/main/images/54addlearningfact.PNG)
+![The learning fact is created](https://github.com/raacee/anki_clone/blob/main/images/54addlearningfact.PNG)<p align="center">*The learning fact is created*</p>
 
 #### <p align="center">Modify Fact</p>
 It is pretty much the same as the creation of a learning fact, but now it is to edit an existing learning fact. The fields are still required, and there is a *Cancel* button to return back.
