@@ -3,7 +3,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Documentation
 ###     The home page
-![Home page](images\1homepage.PNG)
+![Home page](https://github.com/raacee/anki_clone/blob/main/images/1homepage.PNG)
 The home page contains first a navigation bar at its top. This aims to navigate through the different pages of the application to access to the many features implemented.
 - We first have **Home** to go to this home page at any moment.
 - Secondly, we have a **Packages** dropdown that we will explain just after.
@@ -13,37 +13,37 @@ On the right of the navigation bar, there is a button **Light** that can switch 
 
 We can see three icones on each learning packages that are in the study program :
 - **Modify** : access to the learning facts that the user can edit, delete, or add new ones.
-![Modify button](images\12homepage.PNG)
+![Modify button](https://github.com/raacee/anki_clone/blob/main/images/12homepage.PNG)
 - **Delete** : to delete the learning package.
-![Delete button](images\13homepage.PNG)
+![Delete button](https://github.com/raacee/anki_clone/blob/main/images/13homepage.PNG)
 - **Success/Achieve** : to consider the learning package as achieved, so the user has finished studying it and considers it successful.
-![Achieve button](images\14homepage.PNG)
+![Achieve button](https://github.com/raacee/anki_clone/blob/main/images/14homepage.PNG)
 
 
 ###      "Packages" dropdown
-![File dropdown](images\2packagesdropdown.PNG)
+![File dropdown](https://github.com/raacee/anki_clone/blob/main/images/2packagesdropdown.PNG)
 The **Packages** dropdown redirects to two pages : 
 - The **All packages** : available learning packages created packages by the user, but currently not in its study program (stand-by).
 - The **Create a package** : allow the user to create its own learning packages.
 ####     All packages
-![Available learning packages (from File)](images\3nonstudypackages.PNG)
+![Available learning packages (from File)](https://github.com/raacee/anki_clone/blob/main/images/3nonstudypackages.PNG)
 The packages created by the user that can be modified, delete, or add to the study program (--> home's learning packages)
 As the learning packages on the home, we can distinguish the packets by their title, their category and difficulty level.
 ####     Create a package
-![Learning package creation (from File)](images\4packagecreation.PNG)
+![Learning package creation (from File)](https://github.com/raacee/anki_clone/blob/main/images/4packagecreation.PNG)
 The creation of a learning package is easy. The user has to fill the form containing the title, the description, the category and the difficulty level of the learning package. While all these fields are not filled, the *Create Package* button is desactivated.
 When the user submit the form, the package is created in the page **All packages** but is empty.
 > Here is a test :
 
-![Field required](images\41packagecreation.PNG)![Submit button activated](images\42packagecreation.PNG)
-![The learning package is created](images\43packagecreation.PNG)
-![The learning package created is empty](images\44packagecreation.PNG)
+![Field required](https://github.com/raacee/anki_clone/blob/main/images/41packagecreation.PNG)![Submit button activated](https://github.com/raacee/anki_clone/blob/main/images/42packagecreation.PNG)
+![The learning package is created](https://github.com/raacee/anki_clone/blob/main/images/43packagecreation.PNG)
+![The learning package created is empty](https://github.com/raacee/anki_clone/blob/main/images/44packagecreation.PNG)
 
 
 ###      Learning Facts (flashcards)
 > To access to the learning facts of a learning package, click on the *Modify* button :
 
-![The learning facts of the 'TypeScirpt' learning package](images\51modifylearningpackage.PNG)
+![The learning facts of the 'TypeScirpt' learning package](https://github.com/raacee/anki_clone/blob/main/images/51modifylearningpackage.PNG)
 We can see the detailled learning facts of the concerned learning package :
 - The question in bold,
 - the answer in italic just below,
@@ -59,36 +59,37 @@ The creation of a learning fact is easy. The user has to fill the form containin
 When the user submit the form, the learning fact is created.
 > Here is a test :
 
-![Field required](images\52addlearningfact.PNG)![Submit button activated](images\53addlearningfact.PNG)
+![Field required](https://github.com/raacee/anki_clone/blob/main/images/52addlearningfact.PNG)![Submit button activated](https://github.com/raacee/anki_clone/blob/main/images/53addlearningfact.PNG)
 ![The learning fact is created](images\54addlearningfact.PNG) ///// A FAIRE /////
 
 ####     Modify Fact
 It is pretty much the same as the creation of a learning fact, but now it is to edit an existing learning fact. The fields are still required, and there is a *Cancel* button to return back.
-![The learning fact is created](images\6modifylearningfact.PNG)
+![The learning fact is created](https://github.com/raacee/anki_clone/blob/main/images/6modifylearningfact.PNG)
 
 ####     Delete Fact
 By clicking this button, the user deletes the concerned learning fact from the associated learning package.
-///// A FAIRE /////
+![The learning fact before "delete"](https://github.com/raacee/anki_clone/blob/main/images/61deletelearningfact.PNG)
+![After "delete" : the learning fact has been deleted](https://github.com/raacee/anki_clone/blob/main/images/62deletelearningfact.PNG)
 
 ###      Achievements
-![The learning packages achieved (study is over and done)](images\7achievements.PNG)
+![The learning packages achieved (study is over and done)](https://github.com/raacee/anki_clone/blob/main/images/7achievements.PNG)
 
 ###      About
 There is a small text about the project, by who it is made, how, when, why etc... to know a little bit more about the purpose of this application.
-![Summary and context of the application](images\8about.PNG)
+![Summary and context of the application](https://github.com/raacee/anki_clone/blob/main/images/8about.PNG)
 
 ###      Light/Dark mode
 As discussed earlier, there is a **Light** and **Dark** mode on the top right of the navigation bar.
 All the previous images are in *Light mode*, but here is some on *Dark mode* :
-![Dark mode of the home](images\91darkmode.PNG) //// A REFAIRE ////
-![Dark mode of the available learning packages](images\92darkmode.PNG)
-![Dark mode of the learning facts of a learning package](images\93darkmode.PNG)
+![Dark mode of the home](https://github.com/raacee/anki_clone/blob/main/images/91darkmode.PNG) //// A REFAIRE ////
+![Dark mode of the available learning packages](https://github.com/raacee/anki_clone/blob/main/images/92darkmode.PNG)
+![Dark mode of the learning facts of a learning package](https://github.com/raacee/anki_clone/blob/main/images/93darkmode.PNG)
 
 ###     Learning Session
 When the user clicks on a learning package from its study program (home), it launches a learning session that goes through the learning facts of the learning package.
-![Learnig fact's question](images\100questionlearningfact.PNG)
+![Learnig fact's question](https://github.com/raacee/anki_clone/blob/main/images/100questionlearningfact.PNG)
 ![Learnig fact's answer and difficulty of the learning fact](https://github.com/raacee/anki_clone/blob/main/images/100answerlearningfact.PNG)
-![End of the learning session](images\100finishlearningfact.PNG)
+![End of the learning session](https://github.com/raacee/anki_clone/blob/main/images/100finishlearningfact.PNG)
 
 
 ## Development server
