@@ -7,6 +7,13 @@
 - Postgres
 - Sequelize
 - LocalStorage for the dark mode (darkreader package)
+  
+## Features 
+- Adding/Editing/Storing/Deleting learning packages
+- Adding/Editing/Deleting learning facts
+- Learning sessions for each package
+- Achieving a package
+- Dark mode
 
 ## Documentation
 ### <p align="center">Home</p>
