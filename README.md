@@ -28,7 +28,7 @@ The **Packages** dropdown redirects to two pages :
 - The **All packages** : available learning packages created packages by the user, but currently not in its study program (stand-by).
 - The **Create a package** : allow the user to create its own learning packages.
 #### <p align="center">All packages</p>
-<p align="center">![Available learning packages (from Packages)](https://github.com/raacee/anki_clone/blob/main/images/3nonstudypackages.PNG)*Available learning packages (from Packages)*</p>
+![Available learning packages (from Packages)](https://github.com/raacee/anki_clone/blob/main/images/3nonstudypackages.PNG)<p align="center">*Available learning packages (from Packages)*</p>
 
 The packages created by the user that can be modified, delete, or add to the study program (--> home's learning packages)
 As the learning packages on the home, we can distinguish the packets by their title, their category and difficulty level.
@@ -99,9 +99,9 @@ All the previous images are in *Light mode*, but here is some on *Dark mode* :
 
 ### <p align="center">Learning Session</p>
 When the user clicks on a learning package from its study program (home), it launches a learning session that goes through the learning facts of the learning package.
-![Learnig fact's question](https://github.com/raacee/anki_clone/blob/main/images/100questionlearningfact.PNG)<p align="center">*Learnig fact's question*</p>
+![Learning fact's question](https://github.com/raacee/anki_clone/blob/main/images/100questionlearningfact.PNG)<p align="center">*Learning fact's question*</p>
 
-![Learnig fact's answer and difficulty of the learning fact](https://github.com/raacee/anki_clone/blob/main/images/100answerlearningfact.PNG)<p align="center">*Learnig fact's answer and difficulty of the learning fact*</p>
+![Learning fact's answer and difficulty of the learning fact](https://github.com/raacee/anki_clone/blob/main/images/100answerlearningfact.PNG)<p align="center">*Learning fact's answer and difficulty of the learning fact*</p>
 
 ![End of the learning session](https://github.com/raacee/anki_clone/blob/main/images/100finishlearningfact.PNG)<p align="center">*End of the learning session*</p>
 
