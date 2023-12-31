@@ -24,10 +24,10 @@ const routes: Routes = [
   { path: 'add-learning-fact-page/:packageId', component: AddLearningFactPageComponent },
   { path: 'home-page', component: HomePageComponent },
   { path: 'about-page', component: AboutPageComponent },
-  {path : 'login', component:LoginComponent},
-  {path : 'profile', component:ProfileComponent},
+  { path : 'login', component:LoginComponent},
+  { path : 'profile', component:ProfileComponent},
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '/home-page', pathMatch: 'full' }
+  { path: '', redirectTo: 'home-page', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true,enableTracing: true})],
