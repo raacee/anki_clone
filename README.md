@@ -28,7 +28,7 @@ The **Packages** dropdown redirects to two pages :
 - The **All packages** : available learning packages created packages by the user, but currently not in its study program (stand-by).
 - The **Create a package** : allow the user to create its own learning packages.
 #### <p align="center">All packages</p>
-![Available learning packages (from Packages)](https://github.com/raacee/anki_clone/blob/main/images/3nonstudypackages.PNG)<center>*Available learning packages (from Packages)*</p>
+<p align="center">![Available learning packages (from Packages)](https://github.com/raacee/anki_clone/blob/main/images/3nonstudypackages.PNG)*Available learning packages (from Packages)*</p>
 
 The packages created by the user that can be modified, delete, or add to the study program (--> home's learning packages)
 As the learning packages on the home, we can distinguish the packets by their title, their category and difficulty level.
