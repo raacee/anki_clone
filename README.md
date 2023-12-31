@@ -120,9 +120,9 @@ When the user clicks on a learning package from its study program (home), it lau
 ![End of the learning session](https://github.com/raacee/anki_clone/blob/main/images/100finishlearningfact.PNG)<p align="center">*End of the learning session*</p>
 
 ### <p align="center">Login page</p>
-When the user goes on the website, he is directed to the login page where he need sto put his username and password. After logging in he is directed to the home page.
+When the user goes on the website, he is directed to the login page where he need to insert his username and password. After logging in he is directed to the home page.
 ![Login Page](https://github.com/raacee/anki_clone/blob/main/images/login_page.png)<p align="center">*Login Page*</p>
-
+<br></br> Once the user is connected we can see his username when he naviagtes to the profile page.
 ### <p align="center">Profile page</p>
 If the user goes to Settings : <br></br>
 ![Settings](https://github.com/raacee/anki_clone/blob/main/images/settings.png)<p align="center">*Settings*</p>
