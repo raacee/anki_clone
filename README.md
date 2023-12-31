@@ -2,8 +2,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
 
 ## Documentation
-### <center>Home</center>
-![Home page](https://github.com/raacee/anki_clone/blob/main/images/1homepage.PNG)*<center>Home page</center>*
+### <p align="center">Home</p>
+![Home page](https://github.com/raacee/anki_clone/blob/main/images/1homepage.PNG)<p align="center">*Home page*</p>
 
 The home page contains first a navigation bar at its top. This aims to navigate through the different pages of the application to access to the many features implemented.
 - We first have **Home** to go to this home page at any moment.
@@ -21,13 +21,13 @@ We can see three icones on each learning packages that are in the study program 
 ![Achieve button](https://github.com/raacee/anki_clone/blob/main/images/14homepage.PNG)
 
 
-### <center>"Packages" dropdown</center>
-![Packages dropdown](https://github.com/raacee/anki_clone/blob/main/images/2packagesdropdown.PNG)<center>*Packages dropdown*</center>
+### <p align="center">"Packages" dropdown</center>
+![Packages dropdown](https://github.com/raacee/anki_clone/blob/main/images/2packagesdropdown.PNG)<p align="center">*Packages dropdown*</center>
 
 The **Packages** dropdown redirects to two pages : 
 - The **All packages** : available learning packages created packages by the user, but currently not in its study program (stand-by).
 - The **Create a package** : allow the user to create its own learning packages.
-#### <center>All packages</center>
+#### <p align="center">All packages</center>
 ![Available learning packages (from Packages)](https://github.com/raacee/anki_clone/blob/main/images/3nonstudypackages.PNG)<center>*Available learning packages (from Packages)*</center>
 
 The packages created by the user that can be modified, delete, or add to the study program (--> home's learning packages)
