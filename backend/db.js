@@ -4,6 +4,39 @@ async function fetchAllLearningPackages(){
     return await UserLearningPackage.findAll()
 }
 
+async function getActiveLearningPackages(){
+    const ulps = await UserLearningPackage.findAll({
+        where:{
+            ULP_isStudyProgram:true,
+            ULP_isAchieved:false
+        }
+    })
+    const res = []
+    for(const ulp of ulps){
+        let ULP = {
+            id:ulp.ULP_id,
+            category: ulp.ULP_category,
+            description: ulp.ULP_description,
+            title: ulp.ULP_title,
+            difficultyLevel: ulp.ULP_difficultyLevel,
+            isAchieved : ulp.ULP_isAchieved,
+            isStudyProgram  : ulp.ULP_isStudyProgram
+        }
+        const lfs = await getUlpLearningFacts(ulp.ULP_id)
+        const questions = []
+        for(const lf of lfs){
+            questions.push({
+                id:lf.LF_ID,
+                question:lf.LF_question,
+                answer:lf.LF_answer,
+            })
+        }
+        ULP.questions = questions
+        res.push(ULP)
+    }
+    return res
+}
+
 async function getAllLearningPackages(){
     const ulps = await fetchAllLearningPackages()
     const res = []
@@ -300,6 +333,7 @@ async function addNewUser(username, password){
 }
 
 module.exports = {
+    getActiveLearningPackages,
     addNewUser,
     checkPassword,
     updateFact,
