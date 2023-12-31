@@ -34,6 +34,7 @@ As the learning packages on the home, we can distinguish the packets by their ti
 The creation of a learning package is easy. The user has to fill the form containing the title, the description, the category and the difficulty level of the learning package. While all these fields are not filled, the *Create Package* button is desactivated.
 When the user submit the form, the package is created in the page **All packages** but is empty.
 > Here is a test :
+
 ![Field required](images\41packagecreation.PNG)![Submit button activated](images\42packagecreation.PNG)
 ![The learning package is created](images\43packagecreation.PNG)
 ![The learning package created is empty](images\44packagecreation.PNG)
@@ -41,6 +42,7 @@ When the user submit the form, the package is created in the page **All packages
 
 ###      Learning Facts (flashcards)
 > To access to the learning facts of a learning package, click on the *Modify* button :
+
 ![The learning facts of the 'TypeScirpt' learning package](images\51modifylearningpackage.PNG)
 We can see the detailled learning facts of the concerned learning package :
 - The question in bold,
@@ -56,6 +58,7 @@ Also, we distinguish three buttons :
 The creation of a learning fact is easy. The user has to fill the form containing the question and the answer. While all these fields are not filled, the *Add Fact* button is desactivated.
 When the user submit the form, the learning fact is created.
 > Here is a test :
+
 ![Field required](images\52addlearningfact.PNG)![Submit button activated](images\53addlearningfact.PNG)
 ![The learning fact is created](images\54addlearningfact.PNG) ///// A FAIRE /////
 
@@ -84,7 +87,7 @@ All the previous images are in *Light mode*, but here is some on *Dark mode* :
 ###     Learning Session
 When the user clicks on a learning package from its study program (home), it launches a learning session that goes through the learning facts of the learning package.
 ![Learnig fact's question](images\100questionlearningfact.PNG)
-![Learnig fact's answer and difficulty of the learning fact](images\100answerlearningfact.PNG)
+![Learnig fact's answer and difficulty of the learning fact](https://github.com/raacee/anki_clone/blob/main/images/100answerlearningfact.PNG)
 ![End of the learning session](images\100finishlearningfact.PNG)
 
 
