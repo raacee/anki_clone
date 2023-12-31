@@ -123,3 +123,12 @@ When the user clicks on a learning package from its study program (home), it lau
 When the user goes on the website, he is directed to the login page where he need sto put his username and password. After logging in he is directed to the home page.
 ![Login Page](https://github.com/raacee/anki_clone/blob/main/images/login_page.png)<p align="center">*Login Page*</p>
 
+### <p align="center">Profile page</p>
+If the user goes to Settings : 
+![Settings](https://github.com/raacee/anki_clone/blob/main/images/settings.png)<p align="center">*Settings*</p>
+
+The user will be directed to his own profile page : 
+![Profile page](https://github.com/raacee/anki_clone/blob/main/images/profile_page.png)<p align="center">*Profile Page*</p>
+
+
+
